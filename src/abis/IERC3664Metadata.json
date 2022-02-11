@@ -342,7 +342,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"../IERC3664.sol\";\n\n/**\n * @dev Interface for the optional metadata functions from the ERC3664 standard.\n */\ninterface IERC3664Metadata is IERC3664 {\n    /**\n     * @dev Returns the name of the attribute.\n     */\n    function name(uint256 attrId) external view returns (string memory);\n\n    /**\n     * @dev Returns the symbol of the attribute.\n     */\n    function symbol(uint256 attrId) external view returns (string memory);\n\n    /**\n     * @dev Returns the Uniform Resource Identifier (URI) for `attrId` attribute.\n     */\n    function attrURI(uint256 attrId) external view returns (string memory);\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/extensions/IERC3664Metadata.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/extensions/IERC3664Metadata.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/extensions/IERC3664Metadata.sol",
     "exportedSymbols": {
@@ -1051,7 +1051,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.478Z",
+  "updatedAt": "2022-02-08T06:02:26.854Z",
   "devdoc": {
     "details": "Interface for the optional metadata functions from the ERC3664 standard.",
     "kind": "dev",

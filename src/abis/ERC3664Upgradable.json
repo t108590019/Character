@@ -514,7 +514,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"../ERC3664.sol\";\nimport \"./IERC3664Upgradable.sol\";\n\nabstract contract ERC3664Upgradable is ERC3664, IERC3664Upgradable {\n    // attribute ID => settings\n    mapping(uint256 => uint8) public settings;\n\n    // attribute ID => token ID => current Level\n    mapping(uint256 => mapping(uint256 => uint8)) private _levels;\n\n    function levelOf(uint256 _tokenId, uint256 _attrId)\n        public\n        view\n        virtual\n        override\n        returns (uint8)\n    {\n        return _levels[_attrId][_tokenId];\n    }\n\n    function mintWithLevel(\n        uint256 attrId,\n        string memory name,\n        string memory symbol,\n        string memory uri,\n        uint8 maxLevel\n    ) public virtual override {\n        super._mint(attrId, name, symbol, uri);\n\n        settings[attrId] = maxLevel;\n    }\n\n    function upgrade(\n        uint256 _tokenId,\n        uint256 _attrId,\n        uint8 _level\n    ) public virtual override {\n        require(\n            _hasAttr(_tokenId, _attrId),\n            \"ERC3664Upgradable: token has not attached the attribute\"\n        );\n        require(\n            _level <= settings[_attrId],\n            \"ERC3664Upgradable: exceeded the maximum level\"\n        );\n        require(\n            _level == _levels[_attrId][_tokenId] + 1,\n            \"ERC3664Upgradable: invalid level\"\n        );\n\n        _levels[_attrId][_tokenId] = _level;\n\n        emit AttributeUpgraded(_tokenId, _attrId, _level);\n    }\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/extensions/ERC3664Upgradable.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/extensions/ERC3664Upgradable.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/extensions/ERC3664Upgradable.sol",
     "exportedSymbols": {
@@ -3613,7 +3613,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.475Z",
+  "updatedAt": "2022-02-08T06:02:26.847Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

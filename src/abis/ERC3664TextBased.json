@@ -470,7 +470,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"../ERC3664.sol\";\nimport \"./IERC3664TextBased.sol\";\n\nabstract contract ERC3664TextBased is ERC3664, IERC3664TextBased {\n    // attribute ID => token ID => text\n    mapping(uint256 => mapping(uint256 => bytes)) private _texts;\n\n    /**\n     * @dev See {IERC3664-textOf}.\n     */\n    function textOf(uint256 tokenId, uint256 attrId)\n        public\n        view\n        virtual\n        override\n        returns (bytes memory)\n    {\n        return _texts[attrId][tokenId];\n    }\n\n    function attachWithText(\n        uint256 tokenId,\n        uint256 attrId,\n        uint256 amount,\n        bytes memory text\n    ) public virtual override {\n        super.attach(tokenId, attrId, amount);\n\n        if (text.length > 0) {\n            _texts[attrId][tokenId] = text;\n        }\n    }\n\n    /**\n     * @dev See {IERC3664-batchAttach}.\n     */\n    function batchAttachWithTexts(\n        uint256 tokenId,\n        uint256[] calldata attrIds,\n        uint256[] calldata amounts,\n        bytes[] calldata texts\n    ) public virtual override {\n        address operator = _msgSender();\n\n        _beforeAttrTransfer(operator, 0, tokenId, attrIds, amounts, \"\");\n\n        for (uint256 i = 0; i < attrIds.length; i++) {\n            require(\n                _attrExists(attrIds[i]),\n                \"ERC3664: batchAttach for nonexistent attribute\"\n            );\n\n            if (attrBalances[attrIds[i]][tokenId] == 0) {\n                attrs[tokenId].push(attrIds[i]);\n            }\n\n            if (texts[i].length > 0) {\n                _texts[attrIds[i]][tokenId] = texts[i];\n            }\n\n            attrBalances[attrIds[i]][tokenId] += amounts[i];\n        }\n\n        emit TransferBatch(operator, 0, tokenId, attrIds, amounts);\n    }\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/extensions/ERC3664TextBased.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/extensions/ERC3664TextBased.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/extensions/ERC3664TextBased.sol",
     "exportedSymbols": {
@@ -4967,7 +4967,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.463Z",
+  "updatedAt": "2022-02-08T06:02:26.834Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

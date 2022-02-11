@@ -62,7 +62,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\n/**\n * @dev Interface of the NFT Synthetic.\n */\ninterface ISynthetic {\n    function coreName() external view returns (string memory);\n\n    function tokenTexts(uint256 tokenId) external view returns (string memory);\n\n    function tokenAttributes(uint256 tokenId)\n        external\n        view\n        returns (string memory);\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/Synthetic/ISynthetic.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/Synthetic/ISynthetic.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/Synthetic/ISynthetic.sol",
     "exportedSymbols": {
@@ -613,7 +613,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.460Z",
+  "updatedAt": "2022-02-08T06:02:26.829Z",
   "devdoc": {
     "details": "Interface of the NFT Synthetic.",
     "kind": "dev",

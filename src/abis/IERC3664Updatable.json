@@ -406,7 +406,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"./IERC3664Metadata.sol\";\n\n/**\n * @dev Interface for the updatable functions from the ERC3664.\n */\ninterface IERC3664Updatable is IERC3664Metadata {\n    /**\n     * @dev Remove attribute type `attrId` from `tokenId`.\n     */\n    function remove(uint256 tokenId, uint256 attrId) external;\n\n    /**\n     * @dev Increases `amount` value of attribute type `attrId` to `tokenId`.\n     */\n    function increase(\n        uint256 tokenId,\n        uint256 attrId,\n        uint256 amount\n    ) external;\n\n    /**\n     * @dev Decreases `amount` value of attribute type `attrId` from `tokenId`.\n     */\n    function decrease(\n        uint256 tokenId,\n        uint256 attrId,\n        uint256 amount\n    ) external;\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/extensions/IERC3664Updatable.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/extensions/IERC3664Updatable.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/extensions/IERC3664Updatable.sol",
     "exportedSymbols": {
@@ -1225,7 +1225,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.480Z",
+  "updatedAt": "2022-02-08T06:02:26.856Z",
   "devdoc": {
     "details": "Interface for the updatable functions from the ERC3664.",
     "kind": "dev",

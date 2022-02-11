@@ -347,7 +347,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"openzeppelin-solidity/contracts/token/ERC721/IERC721.sol\";\nimport \"./ISynthetic.sol\";\n\n/**\n * @dev Interface of the NFT(ERC721) Synthetic.\n */\ninterface ISynthetic721 is ISynthetic, IERC721 {\n\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/Synthetic/ISynthetic721.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/Synthetic/ISynthetic721.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/Synthetic/ISynthetic721.sol",
     "exportedSymbols": {
@@ -576,7 +576,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.461Z",
+  "updatedAt": "2022-02-08T06:02:26.829Z",
   "devdoc": {
     "details": "Interface of the NFT(ERC721) Synthetic.",
     "kind": "dev",

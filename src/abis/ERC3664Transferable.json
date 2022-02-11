@@ -496,7 +496,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"../ERC3664.sol\";\nimport \"../utils/ITokenHolder.sol\";\nimport \"./IERC3664Transferable.sol\";\n\n/**\n * @dev Implementation of the {ERC3664Transferable} interface.\n */\nabstract contract ERC3664Transferable is ERC3664, IERC3664Transferable {\n    // attribute ID => from token ID => to token ID\n    mapping(uint256 => mapping(uint256 => uint256)) private _allowances;\n\n    address private _nft;\n\n    modifier onlyHolder(uint256 tokenId) {\n        require(\n            ITokenHolder(_nft).holderOf(tokenId) == _msgSender(),\n            \"ERC3664Transferable: caller is not the nft holder\"\n        );\n        _;\n    }\n\n    constructor(address nft, string memory uri_) ERC3664(uri_) {\n        _nft = nft;\n    }\n\n    /**\n     * @dev See {IERC3664Transferable-isApproved}.\n     */\n    function isApproved(\n        uint256 from,\n        uint256 to,\n        uint256 attrId\n    ) public view virtual override returns (bool) {\n        return _allowances[attrId][from] == to;\n    }\n\n    /**\n     * @dev See {IERC3664Transferable-approve}.\n     */\n    function approve(\n        uint256 from,\n        uint256 to,\n        uint256 attrId\n    ) public virtual override onlyHolder(from) {\n        require(\n            from != 0,\n            \"ERC3664Transferable: approve from the zero address\"\n        );\n        require(to != 0, \"ERC3664Transferable: approve to the zero address\");\n        require(\n            !_hasAttr(to, attrId),\n            \"ERC3664Transferable: recipient token has already attached the attribute\"\n        );\n\n        _allowances[attrId][from] = to;\n\n        emit AttributeApproval(_msgSender(), from, to, attrId);\n    }\n\n    /**\n     * @dev See {IERC3664Transferable-transferFrom}.\n     */\n    function transferFrom(\n        uint256 from,\n        uint256 to,\n        uint256 attrId\n    ) public virtual override {\n        require(\n            isApproved(from, to, attrId),\n            \"ERC3664Transferable: nft holder not approve the attribute to recipient\"\n        );\n        require(\n            !_hasAttr(to, attrId),\n            \"ERC3664Transferable: recipient has attached the attribute\"\n        );\n\n        address operator = _msgSender();\n        uint256 amount = attrBalances[attrId][from];\n        _beforeAttrTransfer(\n            operator,\n            from,\n            to,\n            _asSingletonArray(attrId),\n            _asSingletonArray(amount),\n            \"\"\n        );\n\n        attrBalances[attrId][to] = amount;\n        delete attrBalances[attrId][from];\n        delete _allowances[attrId][from];\n\n        emit TransferSingle(operator, from, to, attrId, amount);\n    }\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/extensions/ERC3664Transferable.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/extensions/ERC3664Transferable.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/extensions/ERC3664Transferable.sol",
     "exportedSymbols": {
@@ -6151,7 +6151,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.465Z",
+  "updatedAt": "2022-02-08T06:02:26.842Z",
   "devdoc": {
     "details": "Implementation of the {ERC3664Transferable} interface.",
     "kind": "dev",

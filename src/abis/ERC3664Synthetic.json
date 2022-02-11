@@ -572,7 +572,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"../extensions/ERC3664TextBased.sol\";\n\n/**\n * @dev Implementation of the {ERC3664Synthetic} interface.\n */\nabstract contract ERC3664Synthetic is ERC3664TextBased {\n    struct SynthesizedToken {\n        address owner;\n        uint256 id;\n    }\n\n    // mainToken => SynthesizedToken\n    mapping(uint256 => SynthesizedToken[]) public synthesizedTokens;\n\n    // subToken => mainToken\n    mapping(uint256 => uint256) public subTokens;\n\n    // Mapping from token ID to approved another token.\n    mapping(uint256 => uint256) private _combineApprovals;\n\n    function recordSynthesized(\n        address owner,\n        uint256 tokenId,\n        uint256 subId\n    ) public {\n        synthesizedTokens[tokenId].push(SynthesizedToken(owner, subId));\n        subTokens[subId] = tokenId;\n    }\n\n    function getSynthesizedTokens(uint256 tokenId)\n        public\n        view\n        returns (SynthesizedToken[] memory)\n    {\n        return synthesizedTokens[tokenId];\n    }\n\n    function tokenAttributes(uint256 tokenId)\n        internal\n        view\n        returns (string memory)\n    {\n        bytes memory data = \"\";\n        uint256[] memory attrs = attributesOf(tokenId);\n        for (uint256 i = 0; i < attrs.length; i++) {\n            if (data.length > 0) {\n                data = abi.encodePacked(data, \",\");\n            }\n            data = abi.encodePacked(\n                data,\n                '{\"trait_type\":\"',\n                symbol(attrs[i]),\n                '\",\"value\":\"',\n                textOf(tokenId, attrs[i]),\n                '\"}'\n            );\n        }\n        data = abi.encodePacked(data, getSubAttributes(tokenId));\n\n        return string(data);\n    }\n\n    function getSubAttributes(uint256 tokenId)\n        internal\n        view\n        returns (bytes memory)\n    {\n        bytes memory data = \"\";\n        SynthesizedToken[] memory sTokens = synthesizedTokens[tokenId];\n        for (uint256 i = 0; i < sTokens.length; i++) {\n            if (data.length > 0) {\n                data = abi.encodePacked(data, \",\");\n            }\n            data = abi.encodePacked(data, tokenAttributes(sTokens[i].id));\n        }\n        return data;\n    }\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/Synthetic/ERC3664Synthetic.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/Synthetic/ERC3664Synthetic.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/Synthetic/ERC3664Synthetic.sol",
     "exportedSymbols": {
@@ -5957,7 +5957,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.456Z",
+  "updatedAt": "2022-02-08T06:02:26.811Z",
   "devdoc": {
     "details": "Implementation of the {ERC3664Synthetic} interface.",
     "kind": "dev",

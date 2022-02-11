@@ -454,7 +454,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"../ERC3664.sol\";\nimport \"./IERC3664Updatable.sol\";\n\nabstract contract ERC3664Updatable is ERC3664, IERC3664Updatable {\n    /**\n     * @dev See {IERC3664Updatable-remove}.\n     */\n    function remove(uint256 tokenId, uint256 attrId) public virtual override {\n        require(\n            _attrExists(attrId),\n            \"ERC3664Updatable: remove for nonexistent attribute\"\n        );\n        uint256 amount = attrBalances[attrId][tokenId];\n        require(\n            amount > 0,\n            \"ERC3664Updatable: token has not attached the attribute\"\n        );\n\n        address operator = _msgSender();\n        _beforeAttrTransfer(\n            operator,\n            tokenId,\n            0,\n            _asSingletonArray(attrId),\n            _asSingletonArray(amount),\n            \"\"\n        );\n\n        delete attrBalances[attrId][tokenId];\n        _removeByValue(attrs[tokenId], attrId);\n\n        emit TransferSingle(operator, tokenId, 0, attrId, amount);\n    }\n\n    /**\n     * @dev See {IERC3664Updatable-increase}.\n     */\n    function increase(\n        uint256 tokenId,\n        uint256 attrId,\n        uint256 amount\n    ) public virtual override {\n        require(\n            _attrExists(attrId),\n            \"ERC3664Updatable: increase for nonexistent attribute\"\n        );\n        require(\n            _hasAttr(tokenId, attrId),\n            \"ERC3664Updatable: token has not attached the attribute\"\n        );\n\n        address operator = _msgSender();\n        _beforeAttrTransfer(\n            operator,\n            0,\n            tokenId,\n            _asSingletonArray(attrId),\n            _asSingletonArray(amount),\n            \"\"\n        );\n\n        attrBalances[attrId][tokenId] += amount;\n\n        emit TransferSingle(operator, 0, tokenId, attrId, amount);\n    }\n\n    /**\n     * @dev See {IERC3664Updatable-decrease}.\n     */\n    function decrease(\n        uint256 tokenId,\n        uint256 attrId,\n        uint256 amount\n    ) public virtual override {\n        require(\n            _attrExists(attrId),\n            \"ERC3664Updatable: decrease for nonexistent attribute\"\n        );\n        require(\n            _hasAttr(tokenId, attrId),\n            \"ERC3664Updatable: token has not attached the attribute\"\n        );\n\n        address operator = _msgSender();\n        _beforeAttrTransfer(\n            operator,\n            tokenId,\n            0,\n            _asSingletonArray(attrId),\n            _asSingletonArray(amount),\n            \"\"\n        );\n\n        uint256 tb = attrBalances[attrId][tokenId];\n        require(tb >= amount);\n        attrBalances[attrId][tokenId] = tb - amount;\n\n        emit TransferSingle(operator, tokenId, 0, attrId, amount);\n    }\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/extensions/ERC3664Updatable.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/extensions/ERC3664Updatable.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/extensions/ERC3664Updatable.sol",
     "exportedSymbols": {
@@ -6611,7 +6611,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.468Z",
+  "updatedAt": "2022-02-08T06:02:26.845Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

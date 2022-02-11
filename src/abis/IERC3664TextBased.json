@@ -422,7 +422,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"./IERC3664Metadata.sol\";\n\ninterface IERC3664TextBased is IERC3664Metadata {\n    function textOf(uint256 tokenId, uint256 attrId)\n        external\n        view\n        returns (bytes memory);\n\n    function attachWithText(\n        uint256 tokenId,\n        uint256 attrId,\n        uint256 amount,\n        bytes memory text\n    ) external;\n\n    function batchAttachWithTexts(\n        uint256 tokenId,\n        uint256[] calldata attrIds,\n        uint256[] calldata amounts,\n        bytes[] calldata texts\n    ) external;\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/extensions/IERC3664TextBased.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/extensions/IERC3664TextBased.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/extensions/IERC3664TextBased.sol",
     "exportedSymbols": {
@@ -1411,7 +1411,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.479Z",
+  "updatedAt": "2022-02-08T06:02:26.855Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

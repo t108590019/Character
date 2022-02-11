@@ -578,7 +578,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"../extensions/ERC3664TextBased.sol\";\n\n/**\n * @dev Implementation of the {ERC3664CrossSynthetic} interface.\n */\nabstract contract ERC3664CrossSynthetic is ERC3664TextBased {\n    struct SynthesizedToken {\n        address token;\n        address owner;\n        uint256 id;\n    }\n\n    // mainToken => SynthesizedToken\n    mapping(uint256 => SynthesizedToken[]) public synthesizedTokens;\n\n    function getSynthesizedTokens(uint256 tokenId)\n        public\n        view\n        returns (SynthesizedToken[] memory)\n    {\n        return synthesizedTokens[tokenId];\n    }\n\n    function tokenAttributes(uint256 tokenId)\n        public\n        view\n        returns (string memory)\n    {\n        bytes memory data = \"\";\n        uint256 id = primaryAttributeOf(tokenId);\n        if (id > 0) {\n            data = abi.encodePacked(\n                '{\"trait_type\":\"',\n                symbol(id),\n                '\",\"value\":\"',\n                textOf(tokenId, id),\n                '\"}'\n            );\n        }\n        uint256[] memory attrs = attributesOf(tokenId);\n        for (uint256 i = 0; i < attrs.length; i++) {\n            if (data.length > 0) {\n                data = abi.encodePacked(data, \",\");\n            }\n            data = abi.encodePacked(\n                data,\n                '{\"trait_type\":\"',\n                symbol(attrs[i]),\n                '\",\"value\":\"',\n                textOf(tokenId, attrs[i]),\n                '\"}'\n            );\n        }\n        data = abi.encodePacked(data, getSubAttributes(tokenId));\n\n        return string(data);\n    }\n\n    function getSubAttributes(uint256 tokenId)\n        public\n        view\n        returns (bytes memory)\n    {\n        bytes memory data = \"\";\n        SynthesizedToken[] storage sTokens = synthesizedTokens[tokenId];\n        for (uint256 i = 0; i < sTokens.length; i++) {\n            if (data.length > 0) {\n                data = abi.encodePacked(data, \",\");\n            }\n            data = abi.encodePacked(data, tokenAttributes(sTokens[i].id));\n        }\n        return data;\n    }\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/Synthetic/ERC3664CrossSynthetic.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/Synthetic/ERC3664CrossSynthetic.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/Synthetic/ERC3664CrossSynthetic.sol",
     "exportedSymbols": {
@@ -5979,7 +5979,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.453Z",
+  "updatedAt": "2022-02-08T06:02:26.809Z",
   "devdoc": {
     "details": "Implementation of the {ERC3664CrossSynthetic} interface.",
     "kind": "dev",

@@ -447,7 +447,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"./IERC3664Metadata.sol\";\n\ninterface IERC3664Upgradable is IERC3664Metadata {\n    event AttributeUpgraded(\n        uint256 indexed tokenId,\n        uint256 indexed attrId,\n        uint8 level\n    );\n\n    function levelOf(uint256 tokenId, uint256 attrId)\n        external\n        view\n        returns (uint8);\n\n    function mintWithLevel(\n        uint256 attrId,\n        string memory name,\n        string memory symbol,\n        string memory uri,\n        uint8 maxLevel\n    ) external;\n\n    function upgrade(\n        uint256 tokenId,\n        uint256 attrId,\n        uint8 level\n    ) external;\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/extensions/IERC3664Upgradable.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/extensions/IERC3664Upgradable.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/extensions/IERC3664Upgradable.sol",
     "exportedSymbols": {
@@ -1580,7 +1580,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.480Z",
+  "updatedAt": "2022-02-08T06:02:26.864Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

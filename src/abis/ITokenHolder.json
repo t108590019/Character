@@ -30,7 +30,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\ninterface ITokenHolder {\n    /**\n     * @dev Returns the holder of token type `id`.\n     */\n    function holderOf(uint256 id) external view returns (address);\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/utils/ITokenHolder.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/utils/ITokenHolder.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/utils/ITokenHolder.sol",
     "exportedSymbols": {
@@ -307,7 +307,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.488Z",
+  "updatedAt": "2022-02-08T06:02:26.891Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

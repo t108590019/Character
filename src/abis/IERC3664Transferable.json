@@ -448,7 +448,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"./IERC3664Metadata.sol\";\n\n/**\n * @dev Interface for the transferable functions from the ERC3664.\n */\ninterface IERC3664Transferable is IERC3664Metadata {\n    /**\n     * @dev Emitted when  attribute type `attrId` are approved to \"to\" from `from` by `operator`.\n     */\n    event AttributeApproval(\n        address indexed operator,\n        uint256 from,\n        uint256 to,\n        uint256 attrId\n    );\n\n    /**\n     * @dev Returns true if `attrId` is approved to token `to` from token `from`.\n     */\n    function isApproved(\n        uint256 from,\n        uint256 to,\n        uint256 attrId\n    ) external view returns (bool);\n\n    /**\n     * @dev Approve attribute type `attrId` of token `from` to token `to` called by `from` holder.\n     *\n     * Emits an {AttributeApproval} event.\n     */\n    function approve(\n        uint256 from,\n        uint256 to,\n        uint256 attrId\n    ) external;\n\n    /**\n     * @dev Transfers attribute type `attrId` from token type `from` to `to`.\n     *\n     * Emits a {TransferSingle} event.\n     */\n    function transferFrom(\n        uint256 from,\n        uint256 to,\n        uint256 attrId\n    ) external;\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/extensions/IERC3664Transferable.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/extensions/IERC3664Transferable.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/extensions/IERC3664Transferable.sol",
     "exportedSymbols": {
@@ -1645,7 +1645,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.479Z",
+  "updatedAt": "2022-02-08T06:02:26.855Z",
   "devdoc": {
     "details": "Interface for the transferable functions from the ERC3664.",
     "events": {

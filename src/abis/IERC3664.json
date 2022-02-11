@@ -285,7 +285,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"openzeppelin-solidity/contracts/utils/introspection/IERC165.sol\";\n\n/**\n * @dev Required interface of an ERC3664 compliant contract.\n */\ninterface IERC3664 is IERC165 {\n    /**\n     * @dev Emitted when new attribute type `attrId` are minted.\n     */\n    event AttributeCreated(\n        uint256 indexed attrId,\n        string name,\n        string symbol,\n        string uri\n    );\n\n    /**\n     * @dev Emitted when `value` of attribute type `attrId` are attached to \"to\"\n     * or removed from `from` by `operator`.\n     */\n    event TransferSingle(\n        address indexed operator,\n        uint256 from,\n        uint256 to,\n        uint256 indexed attrId,\n        uint256 value\n    );\n\n    /**\n     * @dev Equivalent to multiple {TransferSingle} events.\n     */\n    event TransferBatch(\n        address indexed operator,\n        uint256 from,\n        uint256 to,\n        uint256[] indexed attrIds,\n        uint256[] values\n    );\n\n    /**\n     * @dev Returns primary attribute type of owned by `tokenId`.\n     */\n    function primaryAttributeOf(uint256 tokenId)\n        external\n        view\n        returns (uint256);\n\n    /**\n     * @dev Returns all attribute types of owned by `tokenId`.\n     */\n    function attributesOf(uint256 tokenId)\n        external\n        view\n        returns (uint256[] memory);\n\n    /**\n     * @dev Returns the attribute type `attrId` value owned by `tokenId`.\n     */\n    function balanceOf(uint256 tokenId, uint256 attrId)\n        external\n        view\n        returns (uint256);\n\n    /**\n     * @dev Returns the batch of attribute type `attrIds` values owned by `tokenId`.\n     */\n    function balanceOfBatch(uint256 tokenId, uint256[] calldata attrIds)\n        external\n        view\n        returns (uint256[] memory);\n\n    /**\n     * @dev Set primary attribute type of owned by `tokenId`.\n     */\n    function setPrimaryAttribute(uint256 tokenId, uint256 attrId) external;\n\n    /**\n     * @dev Attaches `amount` value of attribute type `attrId` to `tokenId`.\n     */\n    function attach(\n        uint256 tokenId,\n        uint256 attrId,\n        uint256 amount\n    ) external;\n\n    /**\n     * @dev [Batched] version of {attach}.\n     */\n    function batchAttach(\n        uint256 tokenId,\n        uint256[] calldata attrIds,\n        uint256[] calldata amounts\n    ) external;\n}\n",
-  "sourcePath": "/Users/li/Project/src/contracts/ERC3664/IERC3664.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/IERC3664.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/IERC3664.sol",
     "exportedSymbols": {
@@ -2948,7 +2948,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-07T02:18:49.451Z",
+  "updatedAt": "2022-02-08T06:02:26.805Z",
   "devdoc": {
     "details": "Required interface of an ERC3664 compliant contract.",
     "events": {
