@@ -6,43 +6,58 @@ import Character from './../abis/Character.json';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 const App = () => {
-  const [account, setAccount] = useState('null');
+  const { ethereum } = window;
+
+  const [account, setAccount] = useState(null)
   const [token, setToken] = useState(null)
-  const [Quantity, setQuantity] = useState(0);
+  const [attrQuantity, setQuantity] = useState(3);
+  const [cardArray, set_cardArray] = useState([])
 
-  useEffect(async () =>{
-    const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
-    setAccount(prev => accounts[0])
+  useEffect(() =>{
+    const init = async () =>{
+      const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+      setAccount(prev => accounts[0])
+      window.web3 = new Web3(window.ethereum)
+      const web3 = window.web3
+      const networkId = await web3.eth.net.getId();
+      const networkData = Character.networks[networkId]
 
-    window.web3 = new Web3(window.ethereum)
-    const web3 = window.web3
-    const networkId = await web3.eth.net.getId();
-    const networkData = Character.networks[networkId]
+      if(networkData){
+        const abi = Character.abi
+        const address = networkData.address
+        const Token = new web3.eth.Contract(abi, address)
+        setToken(prev => Token)
 
-    if(networkData){
-      const abi = Character.abi
-      const address = networkData.address
-      setToken(prev => new web3.eth.Contract(abi, address))
+        const count = await Token.methods.getQuantity().call()
+        setQuantity((prev) => count)
+      }
     }
-    
+    init();
   }, [])
 
-  const cardArray = [
-    {
-      name: 'zero',
-      img: '/images/zero.png'
-    },
-    {
-      name: 'one',
-      img: '/images/one.png'
-    },
-    {
-      name: 'two',
-      img: '/images/two.png'
+  useEffect(() =>{
+    const add = async (attrQuantity) => {
+      if(token != null) {
+        for (let i = 0 ; i < attrQuantity ; i++){
+          const _name = await token.methods.get_attrName(i).call()
+          const _img = await token.methods.attrURI(i).call()
+          set_cardArray((prev) =>[
+            ...prev,
+            {
+              id: i,
+              name: _name,
+              img: _img,
+            },
+          ]);
+        }
+      }
     }
-  ]
+    add(attrQuantity);
+  }, [attrQuantity])
+
+    
   
-  const { ethereum } = window;
+  
 
   const isMetaMaskInstalled = () => {
     //Have to check the ethereum binding on the window object to see if it's installed
@@ -61,18 +76,8 @@ const App = () => {
     )
   }
 
-  const mintAttr = async () => {
-    await token.methods.mint(0, "Hat", "equip", window.location.origin + "hat").send({from: account})
-  }
-
-  const getName = async () =>{
-    const name = await token.methods.name(0).call()
-    setQuantity(prev => name)
-  }
-
   const isConnect = () => {
-    console.log("isConnect" + account)
-    if(account != 'null'){
+    if(account != null){
       return(<p variant='light'>{account}</p>)
     }
     else{
@@ -86,28 +91,36 @@ const App = () => {
     }
   }
 
-  const imageGenerator = () =>{
-    return window.location.origin + '/images/zero.png'
-  }
-  
+  const attribute = cardArray.map((data) =>{
+    console.log(cardArray)
+    return(
+    <Col md="auto" >
+        <Button 
+        variant='outline-primary'
+        id={data.id}
+        onClick={(e) => {
+          const _id = e.target.getAttribute('id')
+          const attach = async (_id) =>{
+            await token.methods.attach(0, _id, 1).send({from: account})
+          }
+          attach(_id)
+        }}>
+        {data.name}
+        </Button>
+    </Col>
+    )
+  })
 
   const render = () =>{
-    
     if(isMetaMaskInstalled()){
       return(
         <div>
           {nav()}
           <Container>
             <Row>
-              <Col  md="auto" >
-                  <img
-                  src={imageGenerator()}/>
-              </Col>
-              <Col><Button variant='outline-success'>組合</Button></Col>
-              <Col><Button variant='outline-danger'onClick={getName}>disp</Button></Col>
-              <Col><Button variant='outline-warning' onClick={mintAttr}>鑄造attrToken</Button></Col>
-              <Col>{Quantity}</Col>
+              {attribute}
             </Row>
+            <br/>
           </Container>
         </div>
       )

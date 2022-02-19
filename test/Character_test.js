@@ -8,6 +8,7 @@ require('chai')
 
   contract('Character', (accounts) => {
     let token
+    let account = accounts[0]
   
     before(async () => {
       token = await Character.deployed()
@@ -21,34 +22,32 @@ require('chai')
         assert.notEqual(address, undefined)
       })
 
-      it("Mint attr", async () => {
-        await token.mint(0, "Hat", "equip", "uri");
-        await token.mint(1, "Sword", "equip", "uri");
-        await token.mint(6, "Boots", "equip", "uri")
-        const attr0_name = await token.name(0);
-        const attr0_symbol = await token.symbol(0);
-        const attr1_name = await token.name(1);
-        const attr1_symbol = await token.symbol(1);
-        assert.equal(attr0_name, "Hat")
-        assert.equal(attr0_symbol, "equip")
-        assert.equal(attr1_name, "Sword")
-        assert.equal(attr1_symbol, "equip")
+      it('Attr', async () => {
+        let count = await token.getQuantity()
+        assert.equal(count, 3)
+        let name = await token.get_attrName(0)
+        assert.equal(name, "attack")
+      })
+
+      it('mint token', async () => {
+        await token.mint(account, 0)
+        let owner = await token.ownerOf(0)
+        let balance = await token.balanceOf(account)
+        assert.equal(owner, account)
+        assert.equal(balance, 1)
       })
 
       it("Attach attr to token", async () => {
-        //attach 2 Hat and 3 Sword attribute to "tokenId" 0
         await token.attach(0, 0, 2)  
         await token.attach(0, 1, 3)
-        await token.attach(0, 6, 1)
-        const countAttr0 = await token.balanceOf(0, 0)
-        const countAttr1 = await token.balanceOf(0, 1)
-        const types = await token.attributesOf(0)
-        assert.equal(countAttr0, 2)
-        assert.equal(countAttr1, 3)
+        let types = await token.attributesOf(0)
         assert.equal(types[0], 0)
         assert.equal(types[1], 1)
-        assert.equal(types[2], 6)
       })
 
+      it('ERC3664 balanceOf', async () => {
+        let count0 = await token.get_attributeAmount(0, 0)
+        assert.equal(count0, 2)
+      })
   })
 })
