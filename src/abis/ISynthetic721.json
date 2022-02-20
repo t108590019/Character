@@ -352,24 +352,24 @@
     "absolutePath": "project:/src/contracts/ERC3664/Synthetic/ISynthetic721.sol",
     "exportedSymbols": {
       "IERC165": [
-        2118
+        2246
       ],
       "IERC721": [
         1515
       ],
       "ISynthetic": [
-        4183
+        4394
       ],
       "ISynthetic721": [
-        4193
+        4404
       ]
     },
-    "id": 4194,
+    "id": 4405,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 4185,
+        "id": 4396,
         "literals": [
           "solidity",
           "^",
@@ -377,29 +377,29 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:23:20"
+        "src": "33:23:21"
       },
       {
         "absolutePath": "openzeppelin-solidity/contracts/token/ERC721/IERC721.sol",
         "file": "openzeppelin-solidity/contracts/token/ERC721/IERC721.sol",
-        "id": 4186,
+        "id": 4397,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 4194,
+        "scope": 4405,
         "sourceUnit": 1516,
-        "src": "58:66:20",
+        "src": "58:66:21",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "project:/src/contracts/ERC3664/Synthetic/ISynthetic.sol",
         "file": "./ISynthetic.sol",
-        "id": 4187,
+        "id": 4398,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 4194,
-        "sourceUnit": 4184,
-        "src": "125:26:20",
+        "scope": 4405,
+        "sourceUnit": 4395,
+        "src": "125:26:21",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -408,79 +408,79 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 4189,
+              "id": 4400,
               "name": "ISynthetic",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 4183,
-              "src": "236:10:20"
+              "referencedDeclaration": 4394,
+              "src": "236:10:21"
             },
-            "id": 4190,
+            "id": 4401,
             "nodeType": "InheritanceSpecifier",
-            "src": "236:10:20"
+            "src": "236:10:21"
           },
           {
             "baseName": {
-              "id": 4191,
+              "id": 4402,
               "name": "IERC721",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1515,
-              "src": "248:7:20"
+              "src": "248:7:21"
             },
-            "id": 4192,
+            "id": 4403,
             "nodeType": "InheritanceSpecifier",
-            "src": "248:7:20"
+            "src": "248:7:21"
           }
         ],
         "canonicalName": "ISynthetic721",
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 4188,
+          "id": 4399,
           "nodeType": "StructuredDocumentation",
-          "src": "153:55:20",
+          "src": "153:55:21",
           "text": " @dev Interface of the NFT(ERC721) Synthetic."
         },
         "fullyImplemented": false,
-        "id": 4193,
+        "id": 4404,
         "linearizedBaseContracts": [
-          4193,
+          4404,
           1515,
-          2118,
-          4183
+          2246,
+          4394
         ],
         "name": "ISynthetic721",
-        "nameLocation": "219:13:20",
+        "nameLocation": "219:13:21",
         "nodeType": "ContractDefinition",
         "nodes": [],
-        "scope": 4194,
-        "src": "209:51:20",
+        "scope": 4405,
+        "src": "209:51:21",
         "usedErrors": []
       }
     ],
-    "src": "33:228:20"
+    "src": "33:228:21"
   },
   "legacyAST": {
     "absolutePath": "project:/src/contracts/ERC3664/Synthetic/ISynthetic721.sol",
     "exportedSymbols": {
       "IERC165": [
-        2118
+        2246
       ],
       "IERC721": [
         1515
       ],
       "ISynthetic": [
-        4183
+        4394
       ],
       "ISynthetic721": [
-        4193
+        4404
       ]
     },
-    "id": 4194,
+    "id": 4405,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 4185,
+        "id": 4396,
         "literals": [
           "solidity",
           "^",
@@ -488,29 +488,29 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:23:20"
+        "src": "33:23:21"
       },
       {
         "absolutePath": "openzeppelin-solidity/contracts/token/ERC721/IERC721.sol",
         "file": "openzeppelin-solidity/contracts/token/ERC721/IERC721.sol",
-        "id": 4186,
+        "id": 4397,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 4194,
+        "scope": 4405,
         "sourceUnit": 1516,
-        "src": "58:66:20",
+        "src": "58:66:21",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
         "absolutePath": "project:/src/contracts/ERC3664/Synthetic/ISynthetic.sol",
         "file": "./ISynthetic.sol",
-        "id": 4187,
+        "id": 4398,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 4194,
-        "sourceUnit": 4184,
-        "src": "125:26:20",
+        "scope": 4405,
+        "sourceUnit": 4395,
+        "src": "125:26:21",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -519,56 +519,56 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 4189,
+              "id": 4400,
               "name": "ISynthetic",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 4183,
-              "src": "236:10:20"
+              "referencedDeclaration": 4394,
+              "src": "236:10:21"
             },
-            "id": 4190,
+            "id": 4401,
             "nodeType": "InheritanceSpecifier",
-            "src": "236:10:20"
+            "src": "236:10:21"
           },
           {
             "baseName": {
-              "id": 4191,
+              "id": 4402,
               "name": "IERC721",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 1515,
-              "src": "248:7:20"
+              "src": "248:7:21"
             },
-            "id": 4192,
+            "id": 4403,
             "nodeType": "InheritanceSpecifier",
-            "src": "248:7:20"
+            "src": "248:7:21"
           }
         ],
         "canonicalName": "ISynthetic721",
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 4188,
+          "id": 4399,
           "nodeType": "StructuredDocumentation",
-          "src": "153:55:20",
+          "src": "153:55:21",
           "text": " @dev Interface of the NFT(ERC721) Synthetic."
         },
         "fullyImplemented": false,
-        "id": 4193,
+        "id": 4404,
         "linearizedBaseContracts": [
-          4193,
+          4404,
           1515,
-          2118,
-          4183
+          2246,
+          4394
         ],
         "name": "ISynthetic721",
-        "nameLocation": "219:13:20",
+        "nameLocation": "219:13:21",
         "nodeType": "ContractDefinition",
         "nodes": [],
-        "scope": 4194,
-        "src": "209:51:20",
+        "scope": 4405,
+        "src": "209:51:21",
         "usedErrors": []
       }
     ],
-    "src": "33:228:20"
+    "src": "33:228:21"
   },
   "compiler": {
     "name": "solc",
@@ -576,7 +576,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-08T06:02:26.829Z",
+  "updatedAt": "2022-02-19T15:51:59.887Z",
   "devdoc": {
     "details": "Interface of the NFT(ERC721) Synthetic.",
     "kind": "dev",

@@ -17,6 +17,9 @@
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
  */
+ var HDWalletProvider = require("truffle-hdwallet-provider");
+ var mnemonic = "rich duty donate pool grain apart grace swap dune round need develop";
+ var infura_url = "https://rinkeby.infura.io/v3/3f1ab071d8d3491a8c8d949a89d31b7f";
 
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
 //
@@ -35,6 +38,13 @@ module.exports = {
    */
 
   networks: {
+    rinkeby: {
+      networkCheckTimeout: 50000,
+      provider: function() {
+        return new HDWalletProvider(mnemonic, infura_url)
+      },
+      network_id: "*"
+    }
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
     // You should run a client (like ganache-cli, geth or parity) in a separate terminal
@@ -85,10 +95,10 @@ module.exports = {
       version: "0.8.11",    // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
-      //  optimizer: {
-      //    enabled: false,
-      //    runs: 200
-      //  },
+      optimizer: {
+          enabled: false,
+          runs: 200
+        },
       //  evmVersion: "byzantium"
       // }
     }

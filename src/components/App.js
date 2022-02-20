@@ -12,6 +12,8 @@ const App = () => {
   const [token, setToken] = useState(null)
   const [attrQuantity, setQuantity] = useState(3);
   const [cardArray, set_cardArray] = useState([])
+  const [tokenOwn, setTokenOwn] = useState(0)
+  const [tokenOwnArray, setTokenOwnArray] = useState([])
 
   useEffect(() =>{
     const init = async () =>{
@@ -30,6 +32,10 @@ const App = () => {
 
         const count = await Token.methods.getQuantity().call()
         setQuantity((prev) => count)
+
+        const balanceOf = await Token.methods.balanceOf(accounts[0]).call()
+        //console.log("get"+balanceOf)
+        setTokenOwn(prev => balanceOf)
       }
     }
     init();
@@ -38,7 +44,7 @@ const App = () => {
   useEffect(() =>{
     const add = async (attrQuantity) => {
       if(token != null) {
-        for (let i = 0 ; i < attrQuantity ; i++){
+        for (let i = 0 ; i < attrQuantity ; i++){   //重複添加
           const _name = await token.methods.get_attrName(i).call()
           const _img = await token.methods.attrURI(i).call()
           set_cardArray((prev) =>[
@@ -55,8 +61,37 @@ const App = () => {
     add(attrQuantity);
   }, [attrQuantity])
 
-    
+  useEffect(() => {
   
+    const add = async (tokenOwn) => {
+      if(token != null){
+        for (let i = 0 ; i < tokenOwn ; i++){
+          const _img = await token.methods.tokenURI(i).call()
+          setTokenOwnArray((prev) => [
+            ...prev,
+            {
+              img: _img
+            }
+          ])
+        }
+      }
+    }
+    add(tokenOwn)
+  }, [tokenOwn])
+    
+  const tokenArray = [
+    {
+      id: 0,
+      name: 'belt',
+      img: '/images/belt.jpeg',
+    },
+    {
+      id: 1,
+      name: 'cloth',
+      img: '/images/cloth.jpeg',
+    }
+  ]
+
   
 
   const isMetaMaskInstalled = () => {
@@ -92,7 +127,6 @@ const App = () => {
   }
 
   const attribute = cardArray.map((data) =>{
-    console.log(cardArray)
     return(
     <Col md="auto" >
         <Button 
@@ -101,7 +135,7 @@ const App = () => {
         onClick={(e) => {
           const _id = e.target.getAttribute('id')
           const attach = async (_id) =>{
-            await token.methods.attach(0, _id, 1).send({from: account})
+            await token.methods.attach(0, _id, 1).send({from: account}) //attach to token0
           }
           attach(_id)
         }}>
@@ -111,6 +145,11 @@ const App = () => {
     )
   })
 
+  const mintToken = async (tokenId, _tokenURI)=>{
+    await token.methods.mint(account, tokenId, _tokenURI).send({from: account})
+    setTokenOwn(prev => parseInt(prev) + 1)
+  }
+
   const render = () =>{
     if(isMetaMaskInstalled()){
       return(
@@ -119,6 +158,34 @@ const App = () => {
           <Container>
             <Row>
               {attribute}
+            </Row>
+            <Row>
+              {tokenArray.map((data) => {
+                return (
+                  <img
+                  id = {data.id}
+                  src={window.location.origin + data.img}
+                  width="180"
+                  height="180"
+                  onClick={(e) => {
+                    const tokenId = e.target.getAttribute('id')
+                    mintToken(tokenId, window.location.origin + data.img)
+                  }}/>
+                )
+              })
+              }
+            </Row>
+            <Row>
+              You have: 
+              {tokenOwnArray.map((data) => {
+                return(
+                  <img
+                    src={data.img}
+                    width="180"
+                    height="180"
+                  />
+                )
+              })}
             </Row>
             <br/>
           </Container>

@@ -35,15 +35,15 @@
     "absolutePath": "project:/src/contracts/ERC3664/utils/ITokenHolder.sol",
     "exportedSymbols": {
       "ITokenHolder": [
-        5863
+        6074
       ]
     },
-    "id": 5864,
+    "id": 6075,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 5854,
+        "id": 6065,
         "literals": [
           "solidity",
           "^",
@@ -51,7 +51,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:23:35"
+        "src": "33:23:36"
       },
       {
         "abstract": false,
@@ -60,42 +60,42 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 5863,
+        "id": 6074,
         "linearizedBaseContracts": [
-          5863
+          6074
         ],
         "name": "ITokenHolder",
-        "nameLocation": "68:12:35",
+        "nameLocation": "68:12:36",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "documentation": {
-              "id": 5855,
+              "id": 6066,
               "nodeType": "StructuredDocumentation",
-              "src": "87:62:35",
+              "src": "87:62:36",
               "text": " @dev Returns the holder of token type `id`."
             },
             "functionSelector": "dbacc237",
-            "id": 5862,
+            "id": 6073,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "holderOf",
-            "nameLocation": "163:8:35",
+            "nameLocation": "163:8:36",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 5858,
+              "id": 6069,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5857,
+                  "id": 6068,
                   "mutability": "mutable",
                   "name": "id",
-                  "nameLocation": "180:2:35",
+                  "nameLocation": "180:2:36",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5862,
-                  "src": "172:10:35",
+                  "scope": 6073,
+                  "src": "172:10:36",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -103,10 +103,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 5856,
+                    "id": 6067,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "172:7:35",
+                    "src": "172:7:36",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -115,21 +115,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "171:12:35"
+              "src": "171:12:36"
             },
             "returnParameters": {
-              "id": 5861,
+              "id": 6072,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5860,
+                  "id": 6071,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5862,
-                  "src": "207:7:35",
+                  "scope": 6073,
+                  "src": "207:7:36",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -137,10 +137,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 5859,
+                    "id": 6070,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "207:7:35",
+                    "src": "207:7:36",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -150,35 +150,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "206:9:35"
+              "src": "206:9:36"
             },
-            "scope": 5863,
-            "src": "154:62:35",
+            "scope": 6074,
+            "src": "154:62:36",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 5864,
-        "src": "58:160:35",
+        "scope": 6075,
+        "src": "58:160:36",
         "usedErrors": []
       }
     ],
-    "src": "33:186:35"
+    "src": "33:186:36"
   },
   "legacyAST": {
     "absolutePath": "project:/src/contracts/ERC3664/utils/ITokenHolder.sol",
     "exportedSymbols": {
       "ITokenHolder": [
-        5863
+        6074
       ]
     },
-    "id": 5864,
+    "id": 6075,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 5854,
+        "id": 6065,
         "literals": [
           "solidity",
           "^",
@@ -186,7 +186,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "33:23:35"
+        "src": "33:23:36"
       },
       {
         "abstract": false,
@@ -195,42 +195,42 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 5863,
+        "id": 6074,
         "linearizedBaseContracts": [
-          5863
+          6074
         ],
         "name": "ITokenHolder",
-        "nameLocation": "68:12:35",
+        "nameLocation": "68:12:36",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "documentation": {
-              "id": 5855,
+              "id": 6066,
               "nodeType": "StructuredDocumentation",
-              "src": "87:62:35",
+              "src": "87:62:36",
               "text": " @dev Returns the holder of token type `id`."
             },
             "functionSelector": "dbacc237",
-            "id": 5862,
+            "id": 6073,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "holderOf",
-            "nameLocation": "163:8:35",
+            "nameLocation": "163:8:36",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 5858,
+              "id": 6069,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5857,
+                  "id": 6068,
                   "mutability": "mutable",
                   "name": "id",
-                  "nameLocation": "180:2:35",
+                  "nameLocation": "180:2:36",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5862,
-                  "src": "172:10:35",
+                  "scope": 6073,
+                  "src": "172:10:36",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -238,10 +238,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 5856,
+                    "id": 6067,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "172:7:35",
+                    "src": "172:7:36",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -250,21 +250,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "171:12:35"
+              "src": "171:12:36"
             },
             "returnParameters": {
-              "id": 5861,
+              "id": 6072,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5860,
+                  "id": 6071,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5862,
-                  "src": "207:7:35",
+                  "scope": 6073,
+                  "src": "207:7:36",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -272,10 +272,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 5859,
+                    "id": 6070,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "207:7:35",
+                    "src": "207:7:36",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -285,21 +285,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "206:9:35"
+              "src": "206:9:36"
             },
-            "scope": 5863,
-            "src": "154:62:35",
+            "scope": 6074,
+            "src": "154:62:36",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 5864,
-        "src": "58:160:35",
+        "scope": 6075,
+        "src": "58:160:36",
         "usedErrors": []
       }
     ],
-    "src": "33:186:35"
+    "src": "33:186:36"
   },
   "compiler": {
     "name": "solc",
@@ -307,7 +307,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-08T06:02:26.891Z",
+  "updatedAt": "2022-02-19T15:52:00.008Z",
   "devdoc": {
     "kind": "dev",
     "methods": {
