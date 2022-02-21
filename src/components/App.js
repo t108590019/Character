@@ -34,7 +34,7 @@ const App = () => {
         setQuantity((prev) => count)
 
         const balanceOf = await Token.methods.balanceOf(accounts[0]).call()
-        //console.log("get"+balanceOf)
+      
         setTokenOwn(prev => balanceOf)
       }
     }
@@ -67,10 +67,12 @@ const App = () => {
       if(token != null){
         for (let i = 0 ; i < tokenOwn ; i++){
           const _img = await token.methods.tokenURI(i).call()
+          const _name = await token.methods.name().call()
           setTokenOwnArray((prev) => [
             ...prev,
             {
-              img: _img
+              img: _img,
+              name: _name
             }
           ])
         }
@@ -177,13 +179,16 @@ const App = () => {
             </Row>
             <Row>
               You have: 
-              {tokenOwnArray.map((data) => {
+              {tokenOwnArray.map((data) => {             
                 return(
+                  <div>
                   <img
                     src={data.img}
                     width="180"
                     height="180"
-                  />
+                  ></img>
+                  <h1>{data.name}</h1>
+                  </div>
                 )
               })}
             </Row>
