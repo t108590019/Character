@@ -23,10 +23,12 @@ const App = () => {
       const web3 = window.web3
       const networkId = await web3.eth.net.getId();
       const networkData = Character.networks[networkId]
+      console.log(networkId)
 
       if(networkData){
         const abi = Character.abi
         const address = networkData.address
+        console.log(abi, address)
         const Token = new web3.eth.Contract(abi, address)
         setToken(prev => Token)
 
@@ -40,6 +42,10 @@ const App = () => {
     }
     init();
   }, [])
+
+  useEffect(()=>{
+    console.log('token')
+  }, [token])
 
   useEffect(() =>{
     const add = async (attrQuantity) => {
@@ -147,8 +153,8 @@ const App = () => {
     )
   })
 
-  const mintToken = async (tokenId, _tokenURI)=>{
-    await token.methods.mint(account, tokenId, _tokenURI).send({from: account})
+  const mintToken = async (tokenId)=>{
+    await token.methods.mint(account, tokenId).send({from: account})
     setTokenOwn(prev => parseInt(prev) + 1)
   }
 
@@ -171,7 +177,7 @@ const App = () => {
                   height="180"
                   onClick={(e) => {
                     const tokenId = e.target.getAttribute('id')
-                    mintToken(tokenId, window.location.origin + data.img)
+                    mintToken(tokenId)
                   }}/>
                 )
               })

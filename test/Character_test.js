@@ -49,5 +49,10 @@ require('chai')
         let count0 = await token.get_attributeAmount(0, 0)
         assert.equal(count0, 2)
       })
+
+      it('Token Metadata URI', async () => {
+        let URI = await token.tokenURI(0)
+        assert.equal("ipfs://QmWGWHDDSFTcct39YiaYg6cQ1Tmug4HEhA6a49ZLmhfujV/0.json", URI)
+      })
   })
 })
