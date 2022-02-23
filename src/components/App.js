@@ -1,34 +1,38 @@
 import React, { useEffect, useState } from 'react';
+import { create } from 'ipfs-http-client';
 import Web3 from 'web3'
 import './App.css';
-import {Navbar, Container, Button, Alert, Row, Col, Card} from 'react-bootstrap'; 
+import {Navbar, Container, Button, Alert, Row, Col} from 'react-bootstrap'; 
 import Character from './../abis/Character.json';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 const App = () => {
   const { ethereum } = window;
+  
 
   const [account, setAccount] = useState(null)
   const [token, setToken] = useState(null)
-  const [attrQuantity, setQuantity] = useState(3);
-  const [cardArray, set_cardArray] = useState([])
-  const [tokenOwn, setTokenOwn] = useState(0)
-  const [tokenOwnArray, setTokenOwnArray] = useState([])
+  const [attrQuantity, setQuantity] = useState(3);          //The number of attribute mint by contract
+  const [cardArray, set_cardArray] = useState([])           //Token mint option
+  const [tokenOwn, setTokenOwn] = useState(0)               //The number of tokens owned by account
+  const [tokenOwnArray, setTokenOwnArray] = useState([])    //The token data owned by account
 
   useEffect(() =>{
     const init = async () =>{
+      //get account that connect site from metamask
       const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
       setAccount(prev => accounts[0])
+
       window.web3 = new Web3(window.ethereum)
       const web3 = window.web3
       const networkId = await web3.eth.net.getId();
       const networkData = Character.networks[networkId]
-      console.log(networkId)
 
       if(networkData){
         const abi = Character.abi
-        const address = networkData.address
-        console.log(abi, address)
+        const address = networkData.address 
+        
+        //deploy contract to front end
         const Token = new web3.eth.Contract(abi, address)
         setToken(prev => Token)
 
@@ -36,17 +40,13 @@ const App = () => {
         setQuantity((prev) => count)
 
         const balanceOf = await Token.methods.balanceOf(accounts[0]).call()
-      
         setTokenOwn(prev => balanceOf)
       }
     }
     init();
   }, [])
 
-  useEffect(()=>{
-    console.log('token')
-  }, [token])
-
+  //get attribute data
   useEffect(() =>{
     const add = async (attrQuantity) => {
       if(token != null) {
@@ -67,8 +67,8 @@ const App = () => {
     add(attrQuantity);
   }, [attrQuantity])
 
-  useEffect(() => {
-  
+  //set tokenOwnArray, the token owned by this account
+  useEffect(() => {       
     const add = async (tokenOwn) => {
       if(token != null){
         for (let i = 0 ; i < tokenOwn ; i++){
@@ -87,6 +87,7 @@ const App = () => {
     add(tokenOwn)
   }, [tokenOwn])
     
+  //Token array is mint option
   const tokenArray = [
     {
       id: 0,
@@ -107,7 +108,7 @@ const App = () => {
     return Boolean(ethereum && ethereum.isMetaMask);
   };
 
-  
+  // Navbar
   const nav = () =>{
     return (
       <Navbar bg="dark" variant="dark">
@@ -119,6 +120,7 @@ const App = () => {
     )
   }
 
+  // If connect is successful, Navbar display the connect account
   const isConnect = () => {
     if(account != null){
       return(<p variant='light'>{account}</p>)
@@ -158,6 +160,11 @@ const App = () => {
     setTokenOwn(prev => parseInt(prev) + 1)
   }
 
+  const burnToken = async (tokenId) =>{
+    await token.methods.burnToken(tokenId).send({from: account})
+    setTokenOwn(prev => parseInt(prev) - 1)  
+  }
+
   const render = () =>{
     if(isMetaMaskInstalled()){
       return(
@@ -166,9 +173,17 @@ const App = () => {
           <Container>
             <Row>
               {attribute}
+              <Button variant='outline-danger'
+                onClick={(e) => {
+                  burnToken(0)
+                }}
+              >
+              burn
+              </Button>
             </Row>
             <Row>
               {tokenArray.map((data) => {
+                //return all Token mint option
                 return (
                   <img
                   id = {data.id}
@@ -184,8 +199,8 @@ const App = () => {
               }
             </Row>
             <Row>
-              You have: 
-              {tokenOwnArray.map((data) => {             
+              You have:
+              {tokenOwnArray.map((data) => {        
                 return(
                   <div>
                   <img
@@ -196,7 +211,8 @@ const App = () => {
                   <h1>{data.name}</h1>
                   </div>
                 )
-              })}
+              })} 
+              
             </Row>
             <br/>
           </Container>
@@ -221,3 +237,8 @@ const App = () => {
 }
 
 export default App;
+/* <img 
+    src={"https://ipfs.io/ipfs/QmSys8vEnsL5hZ99HsYjJ62a1KJQrYwv7n7Qi2df3XbtHM/belt.jpeg"}
+    width="180"
+    height="180"
+  /> */

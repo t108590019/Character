@@ -73,4 +73,7 @@ contract Character is ERC3664, ERC721URIStorage{
                 )
                 : "";
     }
+    function burnToken(uint256 tokenId) public{
+        _burn(tokenId);
+    }
 }

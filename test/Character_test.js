@@ -14,7 +14,7 @@ require('chai')
       token = await Character.deployed()
     })
     describe('deployment', async () => {
-      it('deploys successfully', async () => {
+      it('Deploys successfully', async () => {
         const address = token.address
         assert.notEqual(address, 0x0)
         assert.notEqual(address, '')
@@ -29,7 +29,7 @@ require('chai')
         assert.equal(name, "attack")
       })
 
-      it('mint token', async () => {
+      it('Mint token', async () => {
         await token.mint(account, 0)
         let owner = await token.ownerOf(0)
         let balance = await token.balanceOf(account)
@@ -53,6 +53,20 @@ require('chai')
       it('Token Metadata URI', async () => {
         let URI = await token.tokenURI(0)
         assert.equal("ipfs://QmWGWHDDSFTcct39YiaYg6cQ1Tmug4HEhA6a49ZLmhfujV/0.json", URI)
+      })
+
+      it('Burn Token', async () =>{
+        //Mint tokenId 1
+        await token.mint(account, 1)
+        let owner = await token.ownerOf(0)
+        let balance = await token.balanceOf(account)
+        assert.equal(owner, account)
+        assert.equal(balance, 2)
+
+        //Burn tokenId 1
+        await token.burnToken(1)
+        balance = await token.balanceOf(account)
+        assert.equal(balance, 1)
       })
   })
 })
