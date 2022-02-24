@@ -165,6 +165,16 @@ const App = () => {
     setTokenOwn(prev => parseInt(prev) - 1)  
   }
 
+  const getJson = async(tokenId) =>{
+    try {
+      let response = await fetch('https://gateway.pinata.cloud/ipfs/QmWGWHDDSFTcct39YiaYg6cQ1Tmug4HEhA6a49ZLmhfujV/1.json');
+      let responseJson = await response.json();
+      console.log(responseJson.image)     //return image url 
+     } catch(error) {
+      console.error(error);
+    }
+  }
+
   const render = () =>{
     if(isMetaMaskInstalled()){
       return(
@@ -175,7 +185,7 @@ const App = () => {
               {attribute}
               <Button variant='outline-danger'
                 onClick={(e) => {
-                  burnToken(0)
+                  burnToken(0)  // burn token 0
                 }}
               >
               burn
@@ -204,9 +214,12 @@ const App = () => {
                 return(
                   <div>
                   <img
-                    src={data.img}
+                    src="https://gateway.pinata.cloud/ipfs/QmSys8vEnsL5hZ99HsYjJ62a1KJQrYwv7n7Qi2df3XbtHM/belt.jpeg"
                     width="180"
                     height="180"
+                    onClick={(e) => {
+                      getJson(1)        //get 1.json from ipfs
+                    }}
                   ></img>
                   <h1>{data.name}</h1>
                   </div>
