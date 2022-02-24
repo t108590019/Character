@@ -36,7 +36,7 @@ const App = () => {
         const Token = new web3.eth.Contract(abi, address)
         setToken(prev => Token)
 
-        const count = await Token.methods.getQuantity().call()
+        const count = await Token.methods.getAttrQuantity().call()
         setQuantity((prev) => count)
 
         const balanceOf = await Token.methods.balanceOf(accounts[0]).call()
@@ -51,7 +51,7 @@ const App = () => {
     const add = async (attrQuantity) => {
       if(token != null) {
         for (let i = 0 ; i < attrQuantity ; i++){   //重複添加
-          const _name = await token.methods.get_attrName(i).call()
+          const _name = await token.methods.getAttrName(i).call()
           const _img = await token.methods.attrURI(i).call()
           set_cardArray((prev) =>[
             ...prev,
@@ -120,7 +120,7 @@ const App = () => {
     )
   }
 
-  // If connect is successful, Navbar display the connect account
+  // If connection is successful, Navbar display the connect account
   const isConnect = () => {
     if(account != null){
       return(<p variant='light'>{account}</p>)
@@ -225,10 +225,8 @@ const App = () => {
                   </div>
                 )
               })} 
-              
             </Row>
-            <br/>
-          </Container>
+            <br/>          </Container>
         </div>
       )
     }

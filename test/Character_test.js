@@ -23,9 +23,9 @@ require('chai')
       })
 
       it('Attr', async () => {
-        let count = await token.getQuantity()
+        let count = await token.getAttrQuantity()
         assert.equal(count, 3)
-        let name = await token.get_attrName(0)
+        let name = await token.getAttrName(0)
         assert.equal(name, "attack")
       })
 
@@ -46,7 +46,7 @@ require('chai')
       })
 
       it('ERC3664 balanceOf', async () => {
-        let count0 = await token.get_attributeAmount(0, 0)
+        let count0 = await token.getAttrAmount(0, 0)
         assert.equal(count0, 2)
       })
 

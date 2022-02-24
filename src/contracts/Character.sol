@@ -29,7 +29,7 @@ contract Character is ERC3664, ERC721URIStorage{
         return super.supportsInterface(interfaceId);
     }
 
-    function getQuantity() external view returns(uint256){
+    function getAttrQuantity() external view returns(uint256){
         return attrQuantity;
     }
 
@@ -38,10 +38,10 @@ contract Character is ERC3664, ERC721URIStorage{
         //_setTokenURI(tokenId, _tokenURI);
     }
 
-    function get_attributeAmount(uint256 tokenId, uint attrId) public view returns(uint256){
+    function getAttrAmount(uint256 tokenId, uint attrId) public view returns(uint256){
         return ERC3664.balanceOf(tokenId, attrId);
     }
-    function get_attrName(uint256 attrId) public view returns(string memory){
+    function getAttrName(uint256 attrId) public view returns(string memory){
         return ERC3664.name(attrId);
     }
 
