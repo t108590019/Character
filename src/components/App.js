@@ -8,7 +8,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   const { ethereum } = window;
-  
+  const baseHeader= "https://gateway.pinata.cloud/ipfs/";
+  const ipfsMetadata = "QmcM5RJeQdStzDqpyqVbSvWer3BSkyx8j1kypGpkwmbhLg/";
+
+  const baseExtension = ".json";
 
   const [account, setAccount] = useState(null)
   const [token, setToken] = useState(null)
@@ -37,7 +40,7 @@ const App = () => {
         setToken(prev => Token)
 
         const count = await Token.methods.getAttrQuantity().call()
-        setQuantity((prev) => count)
+        setQuantity(prev => count)
 
         const balanceOf = await Token.methods.balanceOf(accounts[0]).call()
         setTokenOwn(prev => balanceOf)
@@ -72,13 +75,13 @@ const App = () => {
     const add = async (tokenOwn) => {
       if(token != null){
         for (let i = 0 ; i < tokenOwn ; i++){
-          const _img = await token.methods.tokenURI(i).call()
-          const _name = await token.methods.name().call()
+          //const tokenURI = await token.methods.tokenURI(i).call()
+          let _img = await getTokenImage(i)
+          _img = _img.replace("ipfs://", baseHeader)
           setTokenOwnArray((prev) => [
             ...prev,
             {
-              img: _img,
-              name: _name
+              img: _img
             }
           ])
         }
@@ -88,8 +91,7 @@ const App = () => {
   }, [tokenOwn])
     
   //Token array is mint option
-  const tokenArray = [
-    {
+  const tokenArray = [        {
       id: 0,
       name: 'belt',
       img: '/images/belt.jpeg',
@@ -158,6 +160,7 @@ const App = () => {
   const mintToken = async (tokenId)=>{
     await token.methods.mint(account, tokenId).send({from: account})
     setTokenOwn(prev => parseInt(prev) + 1)
+
   }
 
   const burnToken = async (tokenId) =>{
@@ -165,11 +168,13 @@ const App = () => {
     setTokenOwn(prev => parseInt(prev) - 1)  
   }
 
-  const getJson = async(tokenId) =>{
+  const getTokenImage = async(tokenId) =>{
     try {
-      let response = await fetch('https://gateway.pinata.cloud/ipfs/QmWGWHDDSFTcct39YiaYg6cQ1Tmug4HEhA6a49ZLmhfujV/1.json');
+      let URI = baseHeader + ipfsMetadata + tokenId + baseExtension;
+      console.log(URI)
+      let response = await fetch(URI);
       let responseJson = await response.json();
-      console.log(responseJson.image)     //return image url 
+      return responseJson.image
      } catch(error) {
       console.error(error);
     }
@@ -210,23 +215,18 @@ const App = () => {
             </Row>
             <Row>
               You have:
-              {tokenOwnArray.map((data) => {        
+              {tokenOwnArray.map((data) => {       
                 return(
-                  <div>
                   <img
-                    src="https://gateway.pinata.cloud/ipfs/QmSys8vEnsL5hZ99HsYjJ62a1KJQrYwv7n7Qi2df3XbtHM/belt.jpeg"
+                    src={data.img}
                     width="180"
                     height="180"
-                    onClick={(e) => {
-                      getJson(1)        //get 1.json from ipfs
-                    }}
-                  ></img>
-                  <h1>{data.name}</h1>
-                  </div>
+                  />
                 )
               })} 
             </Row>
-            <br/>          </Container>
+            <br/>         
+          </Container>
         </div>
       )
     }

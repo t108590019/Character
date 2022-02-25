@@ -9,6 +9,7 @@ contract Character is ERC3664, ERC721URIStorage{
 
     uint256 private attrQuantity;
     string public baseExtension = ".json";
+    string public baseHeader = "ipfs://";
     string baseURI;
 
     constructor() ERC721("Item_nft", "ITEM") ERC3664("http://localhost:3000/"){
@@ -16,7 +17,7 @@ contract Character is ERC3664, ERC721URIStorage{
         _mint(0, 'attack', 'ATTACK', '');
         _mint(1, 'speed', 'SPEED', '');
         _mint(2, 'defense', 'DEFENSE', '');
-        baseURI = "ipfs://QmWGWHDDSFTcct39YiaYg6cQ1Tmug4HEhA6a49ZLmhfujV/";
+        baseURI = "QmcM5RJeQdStzDqpyqVbSvWer3BSkyx8j1kypGpkwmbhLg/";
     }
 
     function supportsInterface(bytes4 interfaceId)
@@ -66,6 +67,7 @@ contract Character is ERC3664, ERC721URIStorage{
             bytes(currentBaseURI).length > 0
                 ? string(
                     abi.encodePacked(
+                        baseHeader,
                         currentBaseURI,
                         tokenId.toString(),
                         baseExtension

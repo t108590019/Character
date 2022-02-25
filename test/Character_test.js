@@ -52,7 +52,7 @@ require('chai')
 
       it('Token Metadata URI', async () => {
         let URI = await token.tokenURI(0)
-        assert.equal("ipfs://QmWGWHDDSFTcct39YiaYg6cQ1Tmug4HEhA6a49ZLmhfujV/0.json", URI)
+        assert.equal("ipfs://QmcM5RJeQdStzDqpyqVbSvWer3BSkyx8j1kypGpkwmbhLg/0.json", URI)
       })
 
       it('Burn Token', async () =>{
