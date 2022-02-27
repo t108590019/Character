@@ -342,7 +342,7 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\nimport \"../IERC3664.sol\";\n\n/**\n * @dev Interface for the optional metadata functions from the ERC3664 standard.\n */\ninterface IERC3664Metadata is IERC3664 {\n    /**\n     * @dev Returns the name of the attribute.\n     */\n    function name(uint256 attrId) external view returns (string memory);\n\n    /**\n     * @dev Returns the symbol of the attribute.\n     */\n    function symbol(uint256 attrId) external view returns (string memory);\n\n    /**\n     * @dev Returns the Uniform Resource Identifier (URI) for `attrId` attribute.\n     */\n    function attrURI(uint256 attrId) external view returns (string memory);\n}\n",
-  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/extensions/IERC3664Metadata.sol",
+  "sourcePath": "/Users/sean/Desktop/Character/src/contracts/ERC3664/extensions/IERC3664Metadata.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/extensions/IERC3664Metadata.sol",
     "exportedSymbols": {
@@ -350,18 +350,18 @@
         2246
       ],
       "IERC3664": [
-        3950
+        4020
       ],
       "IERC3664Metadata": [
-        5598
+        5668
       ]
     },
-    "id": 5599,
+    "id": 5669,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 5569,
+        "id": 5639,
         "literals": [
           "solidity",
           "^",
@@ -374,11 +374,11 @@
       {
         "absolutePath": "project:/src/contracts/ERC3664/IERC3664.sol",
         "file": "../IERC3664.sol",
-        "id": 5570,
+        "id": 5640,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 5599,
-        "sourceUnit": 3951,
+        "scope": 5669,
+        "sourceUnit": 4021,
         "src": "58:25:28",
         "symbolAliases": [],
         "unitAlias": ""
@@ -388,13 +388,13 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 5572,
+              "id": 5642,
               "name": "IERC3664",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3950,
+              "referencedDeclaration": 4020,
               "src": "204:8:28"
             },
-            "id": 5573,
+            "id": 5643,
             "nodeType": "InheritanceSpecifier",
             "src": "204:8:28"
           }
@@ -403,16 +403,16 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 5571,
+          "id": 5641,
           "nodeType": "StructuredDocumentation",
           "src": "85:88:28",
           "text": " @dev Interface for the optional metadata functions from the ERC3664 standard."
         },
         "fullyImplemented": false,
-        "id": 5598,
+        "id": 5668,
         "linearizedBaseContracts": [
-          5598,
-          3950,
+          5668,
+          4020,
           2246
         ],
         "name": "IERC3664Metadata",
@@ -421,13 +421,13 @@
         "nodes": [
           {
             "documentation": {
-              "id": 5574,
+              "id": 5644,
               "nodeType": "StructuredDocumentation",
               "src": "219:58:28",
               "text": " @dev Returns the name of the attribute."
             },
             "functionSelector": "00ad800c",
-            "id": 5581,
+            "id": 5651,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -435,17 +435,17 @@
             "nameLocation": "291:4:28",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 5577,
+              "id": 5647,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5576,
+                  "id": 5646,
                   "mutability": "mutable",
                   "name": "attrId",
                   "nameLocation": "304:6:28",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5581,
+                  "scope": 5651,
                   "src": "296:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -454,7 +454,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 5575,
+                    "id": 5645,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "296:7:28",
@@ -469,17 +469,17 @@
               "src": "295:16:28"
             },
             "returnParameters": {
-              "id": 5580,
+              "id": 5650,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5579,
+                  "id": 5649,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5581,
+                  "scope": 5651,
                   "src": "335:13:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -488,7 +488,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 5578,
+                    "id": 5648,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "335:6:28",
@@ -502,7 +502,7 @@
               ],
               "src": "334:15:28"
             },
-            "scope": 5598,
+            "scope": 5668,
             "src": "282:68:28",
             "stateMutability": "view",
             "virtual": false,
@@ -510,13 +510,13 @@
           },
           {
             "documentation": {
-              "id": 5582,
+              "id": 5652,
               "nodeType": "StructuredDocumentation",
               "src": "356:60:28",
               "text": " @dev Returns the symbol of the attribute."
             },
             "functionSelector": "4e41a1fb",
-            "id": 5589,
+            "id": 5659,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -524,17 +524,17 @@
             "nameLocation": "430:6:28",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 5585,
+              "id": 5655,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5584,
+                  "id": 5654,
                   "mutability": "mutable",
                   "name": "attrId",
                   "nameLocation": "445:6:28",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5589,
+                  "scope": 5659,
                   "src": "437:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -543,7 +543,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 5583,
+                    "id": 5653,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "437:7:28",
@@ -558,17 +558,17 @@
               "src": "436:16:28"
             },
             "returnParameters": {
-              "id": 5588,
+              "id": 5658,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5587,
+                  "id": 5657,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5589,
+                  "scope": 5659,
                   "src": "476:13:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -577,7 +577,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 5586,
+                    "id": 5656,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "476:6:28",
@@ -591,7 +591,7 @@
               ],
               "src": "475:15:28"
             },
-            "scope": 5598,
+            "scope": 5668,
             "src": "421:70:28",
             "stateMutability": "view",
             "virtual": false,
@@ -599,13 +599,13 @@
           },
           {
             "documentation": {
-              "id": 5590,
+              "id": 5660,
               "nodeType": "StructuredDocumentation",
               "src": "497:93:28",
               "text": " @dev Returns the Uniform Resource Identifier (URI) for `attrId` attribute."
             },
             "functionSelector": "9bc5ae54",
-            "id": 5597,
+            "id": 5667,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -613,17 +613,17 @@
             "nameLocation": "604:7:28",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 5593,
+              "id": 5663,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5592,
+                  "id": 5662,
                   "mutability": "mutable",
                   "name": "attrId",
                   "nameLocation": "620:6:28",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5597,
+                  "scope": 5667,
                   "src": "612:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -632,7 +632,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 5591,
+                    "id": 5661,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "612:7:28",
@@ -647,17 +647,17 @@
               "src": "611:16:28"
             },
             "returnParameters": {
-              "id": 5596,
+              "id": 5666,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5595,
+                  "id": 5665,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5597,
+                  "scope": 5667,
                   "src": "651:13:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -666,7 +666,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 5594,
+                    "id": 5664,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "651:6:28",
@@ -680,14 +680,14 @@
               ],
               "src": "650:15:28"
             },
-            "scope": 5598,
+            "scope": 5668,
             "src": "595:71:28",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 5599,
+        "scope": 5669,
         "src": "174:494:28",
         "usedErrors": []
       }
@@ -701,18 +701,18 @@
         2246
       ],
       "IERC3664": [
-        3950
+        4020
       ],
       "IERC3664Metadata": [
-        5598
+        5668
       ]
     },
-    "id": 5599,
+    "id": 5669,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 5569,
+        "id": 5639,
         "literals": [
           "solidity",
           "^",
@@ -725,11 +725,11 @@
       {
         "absolutePath": "project:/src/contracts/ERC3664/IERC3664.sol",
         "file": "../IERC3664.sol",
-        "id": 5570,
+        "id": 5640,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 5599,
-        "sourceUnit": 3951,
+        "scope": 5669,
+        "sourceUnit": 4021,
         "src": "58:25:28",
         "symbolAliases": [],
         "unitAlias": ""
@@ -739,13 +739,13 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 5572,
+              "id": 5642,
               "name": "IERC3664",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3950,
+              "referencedDeclaration": 4020,
               "src": "204:8:28"
             },
-            "id": 5573,
+            "id": 5643,
             "nodeType": "InheritanceSpecifier",
             "src": "204:8:28"
           }
@@ -754,16 +754,16 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 5571,
+          "id": 5641,
           "nodeType": "StructuredDocumentation",
           "src": "85:88:28",
           "text": " @dev Interface for the optional metadata functions from the ERC3664 standard."
         },
         "fullyImplemented": false,
-        "id": 5598,
+        "id": 5668,
         "linearizedBaseContracts": [
-          5598,
-          3950,
+          5668,
+          4020,
           2246
         ],
         "name": "IERC3664Metadata",
@@ -772,13 +772,13 @@
         "nodes": [
           {
             "documentation": {
-              "id": 5574,
+              "id": 5644,
               "nodeType": "StructuredDocumentation",
               "src": "219:58:28",
               "text": " @dev Returns the name of the attribute."
             },
             "functionSelector": "00ad800c",
-            "id": 5581,
+            "id": 5651,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -786,17 +786,17 @@
             "nameLocation": "291:4:28",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 5577,
+              "id": 5647,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5576,
+                  "id": 5646,
                   "mutability": "mutable",
                   "name": "attrId",
                   "nameLocation": "304:6:28",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5581,
+                  "scope": 5651,
                   "src": "296:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -805,7 +805,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 5575,
+                    "id": 5645,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "296:7:28",
@@ -820,17 +820,17 @@
               "src": "295:16:28"
             },
             "returnParameters": {
-              "id": 5580,
+              "id": 5650,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5579,
+                  "id": 5649,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5581,
+                  "scope": 5651,
                   "src": "335:13:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -839,7 +839,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 5578,
+                    "id": 5648,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "335:6:28",
@@ -853,7 +853,7 @@
               ],
               "src": "334:15:28"
             },
-            "scope": 5598,
+            "scope": 5668,
             "src": "282:68:28",
             "stateMutability": "view",
             "virtual": false,
@@ -861,13 +861,13 @@
           },
           {
             "documentation": {
-              "id": 5582,
+              "id": 5652,
               "nodeType": "StructuredDocumentation",
               "src": "356:60:28",
               "text": " @dev Returns the symbol of the attribute."
             },
             "functionSelector": "4e41a1fb",
-            "id": 5589,
+            "id": 5659,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -875,17 +875,17 @@
             "nameLocation": "430:6:28",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 5585,
+              "id": 5655,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5584,
+                  "id": 5654,
                   "mutability": "mutable",
                   "name": "attrId",
                   "nameLocation": "445:6:28",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5589,
+                  "scope": 5659,
                   "src": "437:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -894,7 +894,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 5583,
+                    "id": 5653,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "437:7:28",
@@ -909,17 +909,17 @@
               "src": "436:16:28"
             },
             "returnParameters": {
-              "id": 5588,
+              "id": 5658,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5587,
+                  "id": 5657,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5589,
+                  "scope": 5659,
                   "src": "476:13:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -928,7 +928,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 5586,
+                    "id": 5656,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "476:6:28",
@@ -942,7 +942,7 @@
               ],
               "src": "475:15:28"
             },
-            "scope": 5598,
+            "scope": 5668,
             "src": "421:70:28",
             "stateMutability": "view",
             "virtual": false,
@@ -950,13 +950,13 @@
           },
           {
             "documentation": {
-              "id": 5590,
+              "id": 5660,
               "nodeType": "StructuredDocumentation",
               "src": "497:93:28",
               "text": " @dev Returns the Uniform Resource Identifier (URI) for `attrId` attribute."
             },
             "functionSelector": "9bc5ae54",
-            "id": 5597,
+            "id": 5667,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -964,17 +964,17 @@
             "nameLocation": "604:7:28",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 5593,
+              "id": 5663,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5592,
+                  "id": 5662,
                   "mutability": "mutable",
                   "name": "attrId",
                   "nameLocation": "620:6:28",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5597,
+                  "scope": 5667,
                   "src": "612:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -983,7 +983,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 5591,
+                    "id": 5661,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "612:7:28",
@@ -998,17 +998,17 @@
               "src": "611:16:28"
             },
             "returnParameters": {
-              "id": 5596,
+              "id": 5666,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 5595,
+                  "id": 5665,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 5597,
+                  "scope": 5667,
                   "src": "651:13:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -1017,7 +1017,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 5594,
+                    "id": 5664,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "651:6:28",
@@ -1031,14 +1031,14 @@
               ],
               "src": "650:15:28"
             },
-            "scope": 5598,
+            "scope": 5668,
             "src": "595:71:28",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 5599,
+        "scope": 5669,
         "src": "174:494:28",
         "usedErrors": []
       }
@@ -1050,8 +1050,8 @@
     "version": "0.8.11+commit.d7f03943.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-19T15:51:59.924Z",
+  "schemaVersion": "3.4.5",
+  "updatedAt": "2022-02-27T06:44:53.817Z",
   "devdoc": {
     "details": "Interface for the optional metadata functions from the ERC3664 standard.",
     "kind": "dev",

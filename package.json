@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "start": "BROWSER='Microsoft Edge' react-scripts start",
+    "start": "BROWSER='Google Chrome' react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

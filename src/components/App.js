@@ -4,7 +4,7 @@ import Web3 from 'web3'
 import './App.css';
 import {Navbar, Container, Button, Alert, Row, Col} from 'react-bootstrap'; 
 import Character from './../abis/Character.json';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   const { ethereum } = window;
@@ -76,11 +76,14 @@ const App = () => {
       if(token != null){
         for (let i = 0 ; i < tokenOwn ; i++){
           //const tokenURI = await token.methods.tokenURI(i).call()
-          let _img = await getTokenImage(i)
+          let _response = await getTokenImage(i);
+          let _img = _response.image;
+          let _name = _response.name;
           _img = _img.replace("ipfs://", baseHeader)
           setTokenOwnArray((prev) => [
             ...prev,
             {
+              name: _name,
               img: _img
             }
           ])
@@ -174,7 +177,7 @@ const App = () => {
       console.log(URI)
       let response = await fetch(URI);
       let responseJson = await response.json();
-      return responseJson.image
+      return responseJson
      } catch(error) {
       console.error(error);
     }
@@ -200,28 +203,34 @@ const App = () => {
               {tokenArray.map((data) => {
                 //return all Token mint option
                 return (
-                  <img
-                  id = {data.id}
-                  src={window.location.origin + data.img}
-                  width="180"
-                  height="180"
-                  onClick={(e) => {
-                    const tokenId = e.target.getAttribute('id')
-                    mintToken(tokenId)
-                  }}/>
+                  <div>
+                    <img
+                    id = {data.id}
+                    src={window.location.origin + data.img}
+                    width="180"
+                    height="180"
+                    onClick={(e) => {
+                      const tokenId = e.target.getAttribute('id')
+                      mintToken(tokenId)
+                    }}/>
+                    <h1>{data.name}</h1>
+                  </div>
                 )
               })
               }
             </Row>
             <Row>
               You have:
-              {tokenOwnArray.map((data) => {       
+              {tokenOwnArray.map((data) => {
                 return(
-                  <img
-                    src={data.img}
-                    width="180"
-                    height="180"
-                  />
+                  <div>
+                    <img
+                      src={data.img}
+                      width="180"
+                      height="180"
+                    />
+                    <h1>{data.name}</h1>
+                  </div>
                 )
               })} 
             </Row>

@@ -30,20 +30,20 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\ninterface ITokenHolder {\n    /**\n     * @dev Returns the holder of token type `id`.\n     */\n    function holderOf(uint256 id) external view returns (address);\n}\n",
-  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/utils/ITokenHolder.sol",
+  "sourcePath": "/Users/sean/Desktop/Character/src/contracts/ERC3664/utils/ITokenHolder.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/utils/ITokenHolder.sol",
     "exportedSymbols": {
       "ITokenHolder": [
-        6074
+        6144
       ]
     },
-    "id": 6075,
+    "id": 6145,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6065,
+        "id": 6135,
         "literals": [
           "solidity",
           "^",
@@ -60,9 +60,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 6074,
+        "id": 6144,
         "linearizedBaseContracts": [
-          6074
+          6144
         ],
         "name": "ITokenHolder",
         "nameLocation": "68:12:36",
@@ -70,13 +70,13 @@
         "nodes": [
           {
             "documentation": {
-              "id": 6066,
+              "id": 6136,
               "nodeType": "StructuredDocumentation",
               "src": "87:62:36",
               "text": " @dev Returns the holder of token type `id`."
             },
             "functionSelector": "dbacc237",
-            "id": 6073,
+            "id": 6143,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -84,17 +84,17 @@
             "nameLocation": "163:8:36",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6069,
+              "id": 6139,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6068,
+                  "id": 6138,
                   "mutability": "mutable",
                   "name": "id",
                   "nameLocation": "180:2:36",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6073,
+                  "scope": 6143,
                   "src": "172:10:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -103,7 +103,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6067,
+                    "id": 6137,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "172:7:36",
@@ -118,17 +118,17 @@
               "src": "171:12:36"
             },
             "returnParameters": {
-              "id": 6072,
+              "id": 6142,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6071,
+                  "id": 6141,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6073,
+                  "scope": 6143,
                   "src": "207:7:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -137,7 +137,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6070,
+                    "id": 6140,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "207:7:36",
@@ -152,14 +152,14 @@
               ],
               "src": "206:9:36"
             },
-            "scope": 6074,
+            "scope": 6144,
             "src": "154:62:36",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 6075,
+        "scope": 6145,
         "src": "58:160:36",
         "usedErrors": []
       }
@@ -170,15 +170,15 @@
     "absolutePath": "project:/src/contracts/ERC3664/utils/ITokenHolder.sol",
     "exportedSymbols": {
       "ITokenHolder": [
-        6074
+        6144
       ]
     },
-    "id": 6075,
+    "id": 6145,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 6065,
+        "id": 6135,
         "literals": [
           "solidity",
           "^",
@@ -195,9 +195,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 6074,
+        "id": 6144,
         "linearizedBaseContracts": [
-          6074
+          6144
         ],
         "name": "ITokenHolder",
         "nameLocation": "68:12:36",
@@ -205,13 +205,13 @@
         "nodes": [
           {
             "documentation": {
-              "id": 6066,
+              "id": 6136,
               "nodeType": "StructuredDocumentation",
               "src": "87:62:36",
               "text": " @dev Returns the holder of token type `id`."
             },
             "functionSelector": "dbacc237",
-            "id": 6073,
+            "id": 6143,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -219,17 +219,17 @@
             "nameLocation": "163:8:36",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 6069,
+              "id": 6139,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6068,
+                  "id": 6138,
                   "mutability": "mutable",
                   "name": "id",
                   "nameLocation": "180:2:36",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6073,
+                  "scope": 6143,
                   "src": "172:10:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -238,7 +238,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 6067,
+                    "id": 6137,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "172:7:36",
@@ -253,17 +253,17 @@
               "src": "171:12:36"
             },
             "returnParameters": {
-              "id": 6072,
+              "id": 6142,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 6071,
+                  "id": 6141,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 6073,
+                  "scope": 6143,
                   "src": "207:7:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -272,7 +272,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 6070,
+                    "id": 6140,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "207:7:36",
@@ -287,14 +287,14 @@
               ],
               "src": "206:9:36"
             },
-            "scope": 6074,
+            "scope": 6144,
             "src": "154:62:36",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 6075,
+        "scope": 6145,
         "src": "58:160:36",
         "usedErrors": []
       }
@@ -306,8 +306,8 @@
     "version": "0.8.11+commit.d7f03943.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.4",
-  "updatedAt": "2022-02-19T15:52:00.008Z",
+  "schemaVersion": "3.4.5",
+  "updatedAt": "2022-02-27T06:44:53.859Z",
   "devdoc": {
     "kind": "dev",
     "methods": {
