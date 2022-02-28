@@ -62,20 +62,20 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n\npragma solidity ^0.8.0;\n\n/**\n * @dev Interface of the NFT Synthetic.\n */\ninterface ISynthetic {\n    function coreName() external view returns (string memory);\n\n    function tokenTexts(uint256 tokenId) external view returns (string memory);\n\n    function tokenAttributes(uint256 tokenId)\n        external\n        view\n        returns (string memory);\n}\n",
-  "sourcePath": "/Users/sean/Desktop/Character/src/contracts/ERC3664/Synthetic/ISynthetic.sol",
+  "sourcePath": "/Users/li/Character/src/contracts/ERC3664/Synthetic/ISynthetic.sol",
   "ast": {
     "absolutePath": "project:/src/contracts/ERC3664/Synthetic/ISynthetic.sol",
     "exportedSymbols": {
       "ISynthetic": [
-        4464
+        4564
       ]
     },
-    "id": 4465,
+    "id": 4565,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 4443,
+        "id": 4543,
         "literals": [
           "solidity",
           "^",
@@ -92,15 +92,15 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 4444,
+          "id": 4544,
           "nodeType": "StructuredDocumentation",
           "src": "58:47:20",
           "text": " @dev Interface of the NFT Synthetic."
         },
         "fullyImplemented": false,
-        "id": 4464,
+        "id": 4564,
         "linearizedBaseContracts": [
-          4464
+          4564
         ],
         "name": "ISynthetic",
         "nameLocation": "116:10:20",
@@ -108,7 +108,7 @@
         "nodes": [
           {
             "functionSelector": "1e1459ba",
-            "id": 4449,
+            "id": 4549,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -116,23 +116,23 @@
             "nameLocation": "142:8:20",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4445,
+              "id": 4545,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "150:2:20"
             },
             "returnParameters": {
-              "id": 4448,
+              "id": 4548,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4447,
+                  "id": 4547,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4449,
+                  "scope": 4549,
                   "src": "176:13:20",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -141,7 +141,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 4446,
+                    "id": 4546,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "176:6:20",
@@ -155,7 +155,7 @@
               ],
               "src": "175:15:20"
             },
-            "scope": 4464,
+            "scope": 4564,
             "src": "133:58:20",
             "stateMutability": "view",
             "virtual": false,
@@ -163,7 +163,7 @@
           },
           {
             "functionSelector": "6fee6dcc",
-            "id": 4456,
+            "id": 4556,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -171,17 +171,17 @@
             "nameLocation": "206:10:20",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4452,
+              "id": 4552,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4451,
+                  "id": 4551,
                   "mutability": "mutable",
                   "name": "tokenId",
                   "nameLocation": "225:7:20",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4456,
+                  "scope": 4556,
                   "src": "217:15:20",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -190,7 +190,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4450,
+                    "id": 4550,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "217:7:20",
@@ -205,17 +205,17 @@
               "src": "216:17:20"
             },
             "returnParameters": {
-              "id": 4455,
+              "id": 4555,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4454,
+                  "id": 4554,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4456,
+                  "scope": 4556,
                   "src": "257:13:20",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -224,7 +224,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 4453,
+                    "id": 4553,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "257:6:20",
@@ -238,7 +238,7 @@
               ],
               "src": "256:15:20"
             },
-            "scope": 4464,
+            "scope": 4564,
             "src": "197:75:20",
             "stateMutability": "view",
             "virtual": false,
@@ -246,7 +246,7 @@
           },
           {
             "functionSelector": "f2824b53",
-            "id": 4463,
+            "id": 4563,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -254,17 +254,17 @@
             "nameLocation": "287:15:20",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4459,
+              "id": 4559,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4458,
+                  "id": 4558,
                   "mutability": "mutable",
                   "name": "tokenId",
                   "nameLocation": "311:7:20",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4463,
+                  "scope": 4563,
                   "src": "303:15:20",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -273,7 +273,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4457,
+                    "id": 4557,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "303:7:20",
@@ -288,17 +288,17 @@
               "src": "302:17:20"
             },
             "returnParameters": {
-              "id": 4462,
+              "id": 4562,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4461,
+                  "id": 4561,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4463,
+                  "scope": 4563,
                   "src": "367:13:20",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -307,7 +307,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 4460,
+                    "id": 4560,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "367:6:20",
@@ -321,14 +321,14 @@
               ],
               "src": "366:15:20"
             },
-            "scope": 4464,
+            "scope": 4564,
             "src": "278:104:20",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 4465,
+        "scope": 4565,
         "src": "106:278:20",
         "usedErrors": []
       }
@@ -339,15 +339,15 @@
     "absolutePath": "project:/src/contracts/ERC3664/Synthetic/ISynthetic.sol",
     "exportedSymbols": {
       "ISynthetic": [
-        4464
+        4564
       ]
     },
-    "id": 4465,
+    "id": 4565,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 4443,
+        "id": 4543,
         "literals": [
           "solidity",
           "^",
@@ -364,15 +364,15 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 4444,
+          "id": 4544,
           "nodeType": "StructuredDocumentation",
           "src": "58:47:20",
           "text": " @dev Interface of the NFT Synthetic."
         },
         "fullyImplemented": false,
-        "id": 4464,
+        "id": 4564,
         "linearizedBaseContracts": [
-          4464
+          4564
         ],
         "name": "ISynthetic",
         "nameLocation": "116:10:20",
@@ -380,7 +380,7 @@
         "nodes": [
           {
             "functionSelector": "1e1459ba",
-            "id": 4449,
+            "id": 4549,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -388,23 +388,23 @@
             "nameLocation": "142:8:20",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4445,
+              "id": 4545,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "150:2:20"
             },
             "returnParameters": {
-              "id": 4448,
+              "id": 4548,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4447,
+                  "id": 4547,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4449,
+                  "scope": 4549,
                   "src": "176:13:20",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -413,7 +413,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 4446,
+                    "id": 4546,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "176:6:20",
@@ -427,7 +427,7 @@
               ],
               "src": "175:15:20"
             },
-            "scope": 4464,
+            "scope": 4564,
             "src": "133:58:20",
             "stateMutability": "view",
             "virtual": false,
@@ -435,7 +435,7 @@
           },
           {
             "functionSelector": "6fee6dcc",
-            "id": 4456,
+            "id": 4556,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -443,17 +443,17 @@
             "nameLocation": "206:10:20",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4452,
+              "id": 4552,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4451,
+                  "id": 4551,
                   "mutability": "mutable",
                   "name": "tokenId",
                   "nameLocation": "225:7:20",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4456,
+                  "scope": 4556,
                   "src": "217:15:20",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -462,7 +462,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4450,
+                    "id": 4550,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "217:7:20",
@@ -477,17 +477,17 @@
               "src": "216:17:20"
             },
             "returnParameters": {
-              "id": 4455,
+              "id": 4555,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4454,
+                  "id": 4554,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4456,
+                  "scope": 4556,
                   "src": "257:13:20",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -496,7 +496,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 4453,
+                    "id": 4553,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "257:6:20",
@@ -510,7 +510,7 @@
               ],
               "src": "256:15:20"
             },
-            "scope": 4464,
+            "scope": 4564,
             "src": "197:75:20",
             "stateMutability": "view",
             "virtual": false,
@@ -518,7 +518,7 @@
           },
           {
             "functionSelector": "f2824b53",
-            "id": 4463,
+            "id": 4563,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -526,17 +526,17 @@
             "nameLocation": "287:15:20",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4459,
+              "id": 4559,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4458,
+                  "id": 4558,
                   "mutability": "mutable",
                   "name": "tokenId",
                   "nameLocation": "311:7:20",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4463,
+                  "scope": 4563,
                   "src": "303:15:20",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -545,7 +545,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 4457,
+                    "id": 4557,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "303:7:20",
@@ -560,17 +560,17 @@
               "src": "302:17:20"
             },
             "returnParameters": {
-              "id": 4462,
+              "id": 4562,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 4461,
+                  "id": 4561,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 4463,
+                  "scope": 4563,
                   "src": "367:13:20",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -579,7 +579,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 4460,
+                    "id": 4560,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "367:6:20",
@@ -593,14 +593,14 @@
               ],
               "src": "366:15:20"
             },
-            "scope": 4464,
+            "scope": 4564,
             "src": "278:104:20",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 4465,
+        "scope": 4565,
         "src": "106:278:20",
         "usedErrors": []
       }
@@ -612,8 +612,8 @@
     "version": "0.8.11+commit.d7f03943.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.5",
-  "updatedAt": "2022-02-27T06:44:53.771Z",
+  "schemaVersion": "3.4.4",
+  "updatedAt": "2022-02-28T16:14:15.096Z",
   "devdoc": {
     "details": "Interface of the NFT Synthetic.",
     "kind": "dev",

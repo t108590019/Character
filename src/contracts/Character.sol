@@ -1,12 +1,13 @@
 pragma solidity ^0.8.0;
 
-import "./ERC3664/ERC3664.sol";
+import "./ERC3664/extensions/ERC3664Updatable.sol";
 import "openzeppelin-solidity/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 
-contract Character is ERC3664, ERC721URIStorage{
+contract Character is ERC3664Updatable, ERC721URIStorage{
     using Strings for uint256;
 
+    uint256 private totalSupply = 10;
     uint256 private attrQuantity;
     string public baseExtension = ".json";
     string public baseHeader = "ipfs://";
@@ -36,7 +37,7 @@ contract Character is ERC3664, ERC721URIStorage{
 
     function mint(address to, uint256 tokenId) public {
         _safeMint(to, tokenId);
-        //_setTokenURI(tokenId, _tokenURI);
+        _afterMintToken(tokenId);
     }
 
     function getAttrAmount(uint256 tokenId, uint attrId) public view returns(uint256){
@@ -75,7 +76,30 @@ contract Character is ERC3664, ERC721URIStorage{
                 )
                 : "";
     }
-    function burnToken(uint256 tokenId) public{
+    function burnToken(uint256 tokenId) public {
         _burn(tokenId);
+    }
+
+    function hasAttr(uint256 tokenId, uint256 attrId) external view returns(bool){
+        return  _hasAttr(tokenId, attrId);
+    }
+
+    function _afterMintToken(uint256 tokenId) internal {
+        uint256 id = totalSupply + tokenId * 3;
+        _mint(address(this), id + 0);
+        _mint(address(this), id + 1);
+        _mint(address(this), id + 2);
+    }
+
+    function seperate(uint256 tokenId, uint256 attrId) external {
+        uint256 id = totalSupply + tokenId * 3;
+        remove(tokenId, attrId);
+        _transfer(address(this), ownerOf(tokenId), id + attrId);
+    }
+
+    function combine(uint256 tokenId, uint256 attrId) external {
+        uint256 id = totalSupply + tokenId * 3;
+        attach(tokenId, attrId, 1);
+        _transfer( ownerOf(tokenId), address(this), id + attrId);
     }
 }

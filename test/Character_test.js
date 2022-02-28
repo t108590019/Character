@@ -9,13 +9,14 @@ require('chai')
   contract('Character', (accounts) => {
     let token
     let account = accounts[0]
+    let address=""
   
     before(async () => {
       token = await Character.deployed()
     })
     describe('deployment', async () => {
       it('Deploys successfully', async () => {
-        const address = token.address
+        address = token.address
         assert.notEqual(address, 0x0)
         assert.notEqual(address, '')
         assert.notEqual(address, null)
@@ -67,6 +68,18 @@ require('chai')
         await token.burnToken(1)
         balance = await token.balanceOf(account)
         assert.equal(balance, 1)
+      })
+
+      it('Seperate attr 0 from token 0', async () =>{
+        await token.seperate(0, 0)
+        assert.equal(await token.hasAttr(0, 0), false)
+        assert.equal(await token.ownerOf(10), account)
+      })
+
+      it('Combine attr 0 with token 0', async () =>{
+        await token.combine(0, 0)
+        assert.equal(await token.hasAttr(0, 0), true)
+        assert.equal(await token.ownerOf(10), address)
       })
   })
 })
