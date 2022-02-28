@@ -38,17 +38,9 @@ require('chai')
         assert.equal(balance, 1)
       })
 
-      it("Attach attr to token", async () => {
-        await token.attach(0, 0, 2)  
-        await token.attach(0, 1, 3)
-        let types = await token.attributesOf(0)
-        assert.equal(types[0], 0)
-        assert.equal(types[1], 1)
-      })
-
       it('ERC3664 balanceOf', async () => {
         let count0 = await token.getAttrAmount(0, 0)
-        assert.equal(count0, 2)
+        assert.equal(count0, 1)
       })
 
       it('Token Metadata URI', async () => {

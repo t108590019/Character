@@ -86,6 +86,9 @@ contract Character is ERC3664Updatable, ERC721URIStorage{
 
     function _afterMintToken(uint256 tokenId) internal {
         uint256 id = totalSupply + tokenId * 3;
+        attach(tokenId, 0, 1);
+        attach(tokenId, 1, 1);
+        attach(tokenId, 2, 1);
         _mint(address(this), id + 0);
         _mint(address(this), id + 1);
         _mint(address(this), id + 2);
