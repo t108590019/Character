@@ -1,4 +1,5 @@
-const { assert } = require('chai')
+
+const { assert, expect } = require('chai')
 
 const Character = artifacts.require('./Character.sol')
 
@@ -30,22 +31,33 @@ require('chai')
         assert.equal(name, "attack")
       })
 
-      it('Mint token', async () => {
+      
+      /*it('Mint token 1 in not sale', async () => { 
+        assert.fail(await token.mint(account, 1), true);s
+      })*/
+
+      it('Mint token 0 in sales', async () => {
+        await token.setSalesActive(true)
         await token.mint(account, 0)
         let owner = await token.ownerOf(0)
         let balance = await token.balanceOf(account)
         assert.equal(owner, account)
         assert.equal(balance, 1)
-      })
 
-      it('ERC3664 balanceOf', async () => {
         let count0 = await token.getAttrAmount(0, 0)
         assert.equal(count0, 1)
       })
 
-      it('Token Metadata URI', async () => {
+
+      it('Token Metadata URI in Not Reveal', async () => {
         let URI = await token.tokenURI(0)
-        assert.equal("ipfs://QmcM5RJeQdStzDqpyqVbSvWer3BSkyx8j1kypGpkwmbhLg/0.json", URI)
+        assert.equal("ipfs://QmY7iP9m5NYhvmqjgr7dmUSDiMndvDdwUHH9jMfeBkZUvH/unpack.json", URI)
+      })
+
+      it('Token Metadata URI in Reveal', async () => {
+        await token.setReveal(true)
+        let URI = await token.tokenURI(0)
+        assert.equal("ipfs://QmY7iP9m5NYhvmqjgr7dmUSDiMndvDdwUHH9jMfeBkZUvH/0.json", URI)
       })
 
       it('Burn Token', async () =>{
@@ -65,13 +77,13 @@ require('chai')
       it('Seperate attr 0 from token 0', async () =>{
         await token.seperate(0, 0)
         assert.equal(await token.hasAttr(0, 0), false)
-        assert.equal(await token.ownerOf(10), account)
+        assert.equal(await token.ownerOf(6), account)
       })
 
       it('Combine attr 0 with token 0', async () =>{
         await token.combine(0, 0)
         assert.equal(await token.hasAttr(0, 0), true)
-        assert.equal(await token.ownerOf(10), address)
+        assert.equal(await token.ownerOf(6), address)
       })
   })
 })

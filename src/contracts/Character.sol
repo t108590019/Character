@@ -7,10 +7,15 @@ import "openzeppelin-solidity/contracts/token/ERC721/extensions/ERC721URIStorage
 contract Character is ERC3664Updatable, ERC721URIStorage{
     using Strings for uint256;
 
-    uint256 private totalSupply = 10;
+    bool public _isSalesActive;
+    bool public _isReveal;
+
+    uint256 private totalSupply = 6;
     uint256 private attrQuantity;
+    
     string public baseExtension = ".json";
     string public baseHeader = "ipfs://";
+    string public notRevealUri;
     string baseURI;
 
     constructor() ERC721("Item_nft", "ITEM") ERC3664("http://localhost:3000/"){
@@ -18,7 +23,10 @@ contract Character is ERC3664Updatable, ERC721URIStorage{
         _mint(0, 'attack', 'ATTACK', '');
         _mint(1, 'speed', 'SPEED', '');
         _mint(2, 'defense', 'DEFENSE', '');
-        baseURI = "QmcM5RJeQdStzDqpyqVbSvWer3BSkyx8j1kypGpkwmbhLg/";
+        baseURI = "QmY7iP9m5NYhvmqjgr7dmUSDiMndvDdwUHH9jMfeBkZUvH/";
+        _isSalesActive = false;
+        _isReveal = false;
+        notRevealUri = "ipfs://QmY7iP9m5NYhvmqjgr7dmUSDiMndvDdwUHH9jMfeBkZUvH/unpack.json";
     }
 
     function supportsInterface(bytes4 interfaceId)
@@ -36,6 +44,7 @@ contract Character is ERC3664Updatable, ERC721URIStorage{
     }
 
     function mint(address to, uint256 tokenId) public {
+        require(_isSalesActive, "Not yet started selling");
         _safeMint(to, tokenId);
         _afterMintToken(tokenId);
     }
@@ -45,6 +54,10 @@ contract Character is ERC3664Updatable, ERC721URIStorage{
     }
     function getAttrName(uint256 attrId) public view returns(string memory){
         return ERC3664.name(attrId);
+    }
+
+    function  setBaseUri(string memory URI) public{    //modify onlyOwner
+        baseURI = URI;
     }
 
     function _baseURI() internal view virtual override returns(string memory){
@@ -63,6 +76,10 @@ contract Character is ERC3664Updatable, ERC721URIStorage{
             "ERC721Metadata: URI query for nonexistent token"
         );
 
+        if(_isReveal == false){
+            return notRevealUri;
+        }
+
         string memory currentBaseURI = _baseURI();
         return
             bytes(currentBaseURI).length > 0
@@ -76,11 +93,12 @@ contract Character is ERC3664Updatable, ERC721URIStorage{
                 )
                 : "";
     }
-    function burnToken(uint256 tokenId) public {
+
+    function burnToken(uint256 tokenId) public {   //Temp public
         _burn(tokenId);
     }
 
-    function hasAttr(uint256 tokenId, uint256 attrId) external view returns(bool){
+    function hasAttr(uint256 tokenId, uint256 attrId) external view returns(bool) { //Temp public
         return  _hasAttr(tokenId, attrId);
     }
 
@@ -94,15 +112,23 @@ contract Character is ERC3664Updatable, ERC721URIStorage{
         _mint(address(this), id + 2);
     }
 
-    function seperate(uint256 tokenId, uint256 attrId) external {
+    function seperate(uint256 tokenId, uint256 attrId) external {   //seperate attribute from token
         uint256 id = totalSupply + tokenId * 3;
         remove(tokenId, attrId);
         _transfer(address(this), ownerOf(tokenId), id + attrId);
     }
 
-    function combine(uint256 tokenId, uint256 attrId) external {
+    function combine(uint256 tokenId, uint256 attrId) external {    //combine attribute with token
         uint256 id = totalSupply + tokenId * 3;
         attach(tokenId, attrId, 1);
         _transfer( ownerOf(tokenId), address(this), id + attrId);
+    }
+
+    function  setSalesActive(bool state) public {    //modify onlyOwner
+        _isSalesActive = state;
+    }
+
+    function  setReveal(bool state) public{    //modify onlyOwner
+        _isReveal = state;
     }
 }

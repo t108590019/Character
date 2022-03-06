@@ -9,9 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
   const { ethereum } = window;
   const baseHeader= "https://gateway.pinata.cloud/ipfs/";
-  const ipfsMetadata = "QmcM5RJeQdStzDqpyqVbSvWer3BSkyx8j1kypGpkwmbhLg/";
-
-  const baseExtension = ".json";
 
   const [account, setAccount] = useState(null)
   const [token, setToken] = useState(null)
@@ -173,7 +170,8 @@ const App = () => {
 
   const getTokenImage = async(tokenId) =>{
     try {
-      let URI = baseHeader + ipfsMetadata + tokenId + baseExtension;
+      let URI = await token.methods.tokenURI(tokenId).call()
+      URI = URI.replace("ipfs://", baseHeader)
       console.log(URI)
       let response = await fetch(URI);
       let responseJson = await response.json();
