@@ -181,6 +181,10 @@ const App = () => {
     }
   }
 
+  const setReveal = async() => {
+    await token.methods.setReveal(true).send({from: account})
+  }
+
   const render = () =>{
     if(isMetaMaskInstalled()){
       return(
@@ -196,6 +200,8 @@ const App = () => {
               >
               burn
               </Button>
+              <Button variant='outline-danger'> Sales </Button>
+              <Button variant='outline-danger' onClick={(e)=>{setReveal()}}> Reveal </Button> 
             </Row>
             <Row>
               {tokenArray.map((data) => {

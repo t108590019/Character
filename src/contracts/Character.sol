@@ -24,7 +24,7 @@ contract Character is ERC3664Updatable, ERC721URIStorage{
         _mint(1, 'speed', 'SPEED', '');
         _mint(2, 'defense', 'DEFENSE', '');
         baseURI = "QmY7iP9m5NYhvmqjgr7dmUSDiMndvDdwUHH9jMfeBkZUvH/";
-        _isSalesActive = false;
+        _isSalesActive = true;
         _isReveal = false;
         notRevealUri = "ipfs://QmY7iP9m5NYhvmqjgr7dmUSDiMndvDdwUHH9jMfeBkZUvH/unpack.json";
     }
