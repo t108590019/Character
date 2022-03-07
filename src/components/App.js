@@ -72,8 +72,9 @@ const App = () => {
     const add = async (tokenOwn) => {
       if(token != null){
         for (let i = 0 ; i < tokenOwn ; i++){
-          //const tokenURI = await token.methods.tokenURI(i).call()
+          
           let _response = await getTokenImage(i);
+          console.log(_response)
           let _img = _response.image;
           let _name = _response.name;
           _img = _img.replace("ipfs://", baseHeader)
