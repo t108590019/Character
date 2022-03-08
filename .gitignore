@@ -105,4 +105,4 @@ dist
 
 ##
 truffle-config.js
-src/abis
+src/abis/
