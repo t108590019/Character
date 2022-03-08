@@ -2,9 +2,10 @@ pragma solidity ^0.8.0;
 
 import "./ERC3664/extensions/ERC3664Updatable.sol";
 import "openzeppelin-solidity/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "openzeppelin-solidity/contracts/access/Ownable.sol";
 
 
-contract Character is ERC3664Updatable, ERC721URIStorage{
+contract Character is ERC3664Updatable, ERC721URIStorage, Ownable{
     using Strings for uint256;
 
     bool public _isSalesActive;
@@ -55,10 +56,6 @@ contract Character is ERC3664Updatable, ERC721URIStorage{
     
     function getAttrName(uint256 attrId) public view returns(string memory){
         return ERC3664.name(attrId);
-    }
-
-    function  setBaseUri(string memory URI) public{    //modify onlyOwner
-        baseURI = URI;
     }
 
     function _baseURI() internal view virtual override returns(string memory){
@@ -125,11 +122,18 @@ contract Character is ERC3664Updatable, ERC721URIStorage{
         _transfer( ownerOf(tokenId), address(this), id + attrId);
     }
 
-    function  setSalesActive(bool state) public {    //modify onlyOwner
+
+    //onlyOwner
+
+    function  setSalesActive(bool state) public onlyOwner{
         _isSalesActive = state;
     }
 
-    function  setReveal(bool state) public{    //modify onlyOwner
+    function  setReveal(bool state) public onlyOwner{
         _isReveal = state;
+    }
+
+    function  setBaseUri(string memory URI) public onlyOwner{
+        baseURI = URI;
     }
 }
