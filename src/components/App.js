@@ -158,9 +158,8 @@ const App = () => {
   })
 
   const mintToken = async (tokenId)=>{
-    await token.methods.mint(account, tokenId).send({from: account})
+    await token.methods.mint(account, tokenId).send({from: account, value: Web3.utils.toWei('0.1')})
     setTokenOwnQuantity(prev => parseInt(prev) + 1)
-
   }
 
   const burnToken = async (tokenId) =>{

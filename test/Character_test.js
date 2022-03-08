@@ -17,6 +17,8 @@ require('chai')
     })
     describe('deployment', async () => {
       it('Deploys successfully', async () => {
+        const owner = await token.owner()
+        console.log(owner)
         address = token.address
         assert.notEqual(address, 0x0)
         assert.notEqual(address, '')
@@ -38,7 +40,7 @@ require('chai')
 
       it('Mint token 0 in sales', async () => {
         await token.setSalesActive(true)
-        await token.mint(account, 0)
+        await token.mint(account, 0, {from: accounts[1], value: web3.utils.toWei('0.1')})
         let owner = await token.ownerOf(0)
         let balance = await token.balanceOf(account)
         assert.equal(owner, account)
@@ -62,7 +64,7 @@ require('chai')
 
       it('Burn Token', async () =>{
         //Mint tokenId 1
-        await token.mint(account, 1)
+        await token.mint(account, 1, {from: accounts[1], value: web3.utils.toWei('0.1')})
         let owner = await token.ownerOf(0)
         let balance = await token.balanceOf(account)
         assert.equal(owner, account)
@@ -72,9 +74,6 @@ require('chai')
         await token.burnToken(1)
         balance = await token.balanceOf(account)
         assert.equal(balance, 1)
-
-        //Mint tokenId 1 again
-        await token.mint(account, 1)
       })
 
       it('Seperate attr 0 from token 0', async () =>{
@@ -88,5 +87,11 @@ require('chai')
         assert.equal(await token.hasAttr(0, 0), true)
         assert.equal(await token.ownerOf(6), address)
       })
-  })
+
+      /*it('Token withdraw ', async () =>{
+        
+        await token.withdraw({from: accounts[0]})
+        console.log(await token.accounts[0].balance)
+      })*/
+    })
 })

@@ -7,8 +7,10 @@ import "openzeppelin-solidity/contracts/access/Ownable.sol";
 
 contract Character is ERC3664Updatable, ERC721URIStorage, Ownable{
     using Strings for uint256;
+    address payable private _owner = payable(0x627306090abaB3A6e1400e9345bC60c78a8BEf57);
 
     bool public _isSalesActive;
+
     bool public _isReveal;
 
     uint256 private totalSupply = 6;
@@ -44,8 +46,10 @@ contract Character is ERC3664Updatable, ERC721URIStorage, Ownable{
         return attrQuantity;
     }
 
-    function mint(address to, uint256 tokenId) public {
+    function mint(address to, uint256 tokenId) external payable{
         require(_isSalesActive, "Not yet started selling");
+        require(msg.value == 0.1 ether, "You don't have enough eth to mint token");
+        
         _safeMint(to, tokenId);
         _afterMintToken(tokenId);
     }
@@ -92,13 +96,6 @@ contract Character is ERC3664Updatable, ERC721URIStorage, Ownable{
                 : "";
     }
 
-    function burnToken(uint256 tokenId) public {   //Temp public
-        _burn(tokenId);
-    }
-
-    function hasAttr(uint256 tokenId, uint256 attrId) external view returns(bool) { //Temp public
-        return  _hasAttr(tokenId, attrId);
-    }
 
     function _afterMintToken(uint256 tokenId) internal {
         uint256 id = totalSupply + tokenId * 3;
@@ -111,6 +108,7 @@ contract Character is ERC3664Updatable, ERC721URIStorage, Ownable{
     }
 
     function seperate(uint256 tokenId, uint256 attrId) external {   //seperate attribute from token
+        require(_hasAttr(tokenId, attrId), "You don't have the attribute in this token");
         uint256 id = totalSupply + tokenId * 3;
         remove(tokenId, attrId);
         _transfer(address(this), ownerOf(tokenId), id + attrId);
@@ -124,7 +122,6 @@ contract Character is ERC3664Updatable, ERC721URIStorage, Ownable{
 
 
     //onlyOwner
-
     function  setSalesActive(bool state) public onlyOwner{
         _isSalesActive = state;
     }
@@ -136,4 +133,20 @@ contract Character is ERC3664Updatable, ERC721URIStorage, Ownable{
     function  setBaseUri(string memory URI) public onlyOwner{
         baseURI = URI;
     }
+    function  withdraw() external onlyOwner{
+        _owner.transfer(address(this).balance);
+    }
+
+    //For test
+    function burnToken(uint256 tokenId) public {   //Temp public
+        _burn(tokenId);
+    }
+
+    function hasAttr(uint256 tokenId, uint256 attrId) external view returns(bool) { //Temp public
+        return  _hasAttr(tokenId, attrId);
+    }
+
+    /*function getAccountBalance() external view returns(uint256){
+        return address(this).balance;
+    }*/
 }
