@@ -52,6 +52,7 @@ contract Character is ERC3664Updatable, ERC721URIStorage{
     function getAttrAmount(uint256 tokenId, uint attrId) public view returns(uint256){
         return ERC3664.balanceOf(tokenId, attrId);
     }
+    
     function getAttrName(uint256 attrId) public view returns(string memory){
         return ERC3664.name(attrId);
     }

@@ -72,6 +72,9 @@ require('chai')
         await token.burnToken(1)
         balance = await token.balanceOf(account)
         assert.equal(balance, 1)
+
+        //Mint tokenId 1 again
+        await token.mint(account, 1)
       })
 
       it('Seperate attr 0 from token 0', async () =>{
