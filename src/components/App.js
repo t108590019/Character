@@ -7,7 +7,7 @@ import Character from './../abis/Character.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
-  const { ethereum } = window;
+  const { ethereum } = window
   const baseHeader= "https://gateway.pinata.cloud/ipfs/";
   const ipfsMetadata = "QmcM5RJeQdStzDqpyqVbSvWer3BSkyx8j1kypGpkwmbhLg/";
 
