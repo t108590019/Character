@@ -1,4 +1,5 @@
-const { assert } = require('chai')
+
+const { assert, expect } = require('chai')
 
 const Character = artifacts.require('./Character.sol')
 
@@ -9,13 +10,16 @@ require('chai')
   contract('Character', (accounts) => {
     let token
     let account = accounts[0]
+    let address=""
   
     before(async () => {
       token = await Character.deployed()
     })
     describe('deployment', async () => {
       it('Deploys successfully', async () => {
-        const address = token.address
+        const owner = await token.owner()
+        console.log(owner)
+        address = token.address
         assert.notEqual(address, 0x0)
         assert.notEqual(address, '')
         assert.notEqual(address, null)
@@ -29,35 +33,38 @@ require('chai')
         assert.equal(name, "attack")
       })
 
-      it('Mint token', async () => {
-        await token.mint(account, 0)
+      
+      /*it('Mint token 1 in not sale', async () => { 
+        assert.fail(await token.mint(account, 1), true);s
+      })*/
+
+      it('Mint token 0 in sales', async () => {
+        await token.setSalesActive(true)
+        await token.mint(account, 0, {from: accounts[1], value: web3.utils.toWei('0.1')})
         let owner = await token.ownerOf(0)
         let balance = await token.balanceOf(account)
         assert.equal(owner, account)
         assert.equal(balance, 1)
-      })
 
-      it("Attach attr to token", async () => {
-        await token.attach(0, 0, 2)  
-        await token.attach(0, 1, 3)
-        let types = await token.attributesOf(0)
-        assert.equal(types[0], 0)
-        assert.equal(types[1], 1)
-      })
-
-      it('ERC3664 balanceOf', async () => {
         let count0 = await token.getAttrAmount(0, 0)
-        assert.equal(count0, 2)
+        assert.equal(count0, 1)
       })
 
-      it('Token Metadata URI', async () => {
+
+      it('Token Metadata URI in Not Reveal', async () => {
         let URI = await token.tokenURI(0)
-        assert.equal("ipfs://QmcM5RJeQdStzDqpyqVbSvWer3BSkyx8j1kypGpkwmbhLg/0.json", URI)
+        assert.equal("ipfs://QmY7iP9m5NYhvmqjgr7dmUSDiMndvDdwUHH9jMfeBkZUvH/unpack.json", URI)
+      })
+
+      it('Token Metadata URI in Reveal', async () => {
+        await token.setReveal(true)
+        let URI = await token.tokenURI(0)
+        assert.equal("ipfs://QmY7iP9m5NYhvmqjgr7dmUSDiMndvDdwUHH9jMfeBkZUvH/0.json", URI)
       })
 
       it('Burn Token', async () =>{
         //Mint tokenId 1
-        await token.mint(account, 1)
+        await token.mint(account, 1, {from: accounts[1], value: web3.utils.toWei('0.1')})
         let owner = await token.ownerOf(0)
         let balance = await token.balanceOf(account)
         assert.equal(owner, account)
@@ -68,5 +75,23 @@ require('chai')
         balance = await token.balanceOf(account)
         assert.equal(balance, 1)
       })
-  })
+
+      it('Seperate attr 0 from token 0', async () =>{
+        await token.seperate(0, 0)
+        assert.equal(await token.hasAttr(0, 0), false)
+        assert.equal(await token.ownerOf(6), account)
+      })
+
+      it('Combine attr 0 with token 0', async () =>{
+        await token.combine(0, 0)
+        assert.equal(await token.hasAttr(0, 0), true)
+        assert.equal(await token.ownerOf(6), address)
+      })
+
+      /*it('Token withdraw ', async () =>{
+        
+        await token.withdraw({from: accounts[0]})
+        console.log(await token.accounts[0].balance)
+      })*/
+    })
 })

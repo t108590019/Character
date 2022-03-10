@@ -9,15 +9,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
   const { ethereum } = window
   const baseHeader= "https://gateway.pinata.cloud/ipfs/";
-  const ipfsMetadata = "QmcM5RJeQdStzDqpyqVbSvWer3BSkyx8j1kypGpkwmbhLg/";
 
-  const baseExtension = ".json";
+  //Token array is mint option
+  const tokenOptions= [{
+      id: 0,
+      name: 'belt',
+      img: '/images/belt.jpeg',
+    },
+    {
+      id: 1,
+      name: 'cloth',
+      img: '/images/cloth.jpeg',
+    }
+  ]
 
   const [account, setAccount] = useState(null)
   const [token, setToken] = useState(null)
   const [attrQuantity, setQuantity] = useState(3);          //The number of attribute mint by contract
   const [cardArray, set_cardArray] = useState([])           //Token mint option
-  const [tokenOwn, setTokenOwn] = useState(0)               //The number of tokens owned by account
+  const [tokenOwnQuantity, setTokenOwnQuantity] = useState(0)               //The number of tokens owned by account
   const [tokenOwnArray, setTokenOwnArray] = useState([])    //The token data owned by account
 
   useEffect(() =>{
@@ -43,7 +53,7 @@ const App = () => {
         setQuantity(prev => count)
 
         const balanceOf = await Token.methods.balanceOf(accounts[0]).call()
-        setTokenOwn(prev => balanceOf)
+        setTokenOwnQuantity(prev => balanceOf)
       }
     }
     init();
@@ -72,11 +82,12 @@ const App = () => {
 
   //set tokenOwnArray, the token owned by this account
   useEffect(() => {       
-    const add = async (tokenOwn) => {
+    const add = async (tokenOwnQuantity) => {
       if(token != null){
-        for (let i = 0 ; i < tokenOwn ; i++){
-          //const tokenURI = await token.methods.tokenURI(i).call()
+        for (let i = 0 ; i < tokenOwnQuantity ; i++){
+          
           let _response = await getTokenImage(i);
+          //console.log(_response)
           let _img = _response.image;
           let _name = _response.name;
           _img = _img.replace("ipfs://", baseHeader)
@@ -90,31 +101,12 @@ const App = () => {
         }
       }
     }
-    add(tokenOwn)
-  }, [tokenOwn])
+    add(tokenOwnQuantity)
+  }, [tokenOwnQuantity])
     
-  //Token array is mint option
-  const tokenArray = [        {
-      id: 0,
-      name: 'belt',
-      img: '/images/belt.jpeg',
-    },
-    {
-      id: 1,
-      name: 'cloth',
-      img: '/images/cloth.jpeg',
-    }
-  ]
-
   
-
-  const isMetaMaskInstalled = () => {
-    //Have to check the ethereum binding on the window object to see if it's installed
-    return Boolean(ethereum && ethereum.isMetaMask);
-  };
-
   // Navbar
-  const nav = () =>{
+  const Nav = () =>{
     return (
       <Navbar bg="dark" variant="dark">
         <Container>
@@ -124,7 +116,7 @@ const App = () => {
       </Navbar>
     )
   }
-
+  
   // If connection is successful, Navbar display the connect account
   const isConnect = () => {
     if(account != null){
@@ -141,7 +133,12 @@ const App = () => {
     }
   }
 
-  const attribute = cardArray.map((data) =>{
+  const isMetaMaskInstalled = () => {
+    //Have to check the ethereum binding on the window object to see if it's installed
+    return Boolean(ethereum && ethereum.isMetaMask);
+  };
+
+  const attributeButton = cardArray.map((data) =>{
     return(
     <Col md="auto" >
         <Button 
@@ -161,20 +158,22 @@ const App = () => {
   })
 
   const mintToken = async (tokenId)=>{
-    await token.methods.mint(account, tokenId).send({from: account})
-    setTokenOwn(prev => parseInt(prev) + 1)
-
+    await token.methods.mint(account, tokenId).send({from: account, value: Web3.utils.toWei('0.1')})
+    setTokenOwnQuantity(prev => parseInt(prev) + 1)
   }
 
   const burnToken = async (tokenId) =>{
     await token.methods.burnToken(tokenId).send({from: account})
-    setTokenOwn(prev => parseInt(prev) - 1)  
+    setTokenOwnQuantity(prev => parseInt(prev) - 1)  
   }
 
   const getTokenImage = async(tokenId) =>{
+  console.log("exe")
     try {
-      let URI = baseHeader + ipfsMetadata + tokenId + baseExtension;
+      let URI = await token.methods.tokenURI(tokenId).call()
       console.log(URI)
+      console.log("exe")
+      URI = URI.replace("ipfs://", baseHeader)
       let response = await fetch(URI);
       let responseJson = await response.json();
       return responseJson
@@ -183,14 +182,18 @@ const App = () => {
     }
   }
 
+  const setReveal = async() => {
+    await token.methods.setReveal(true).send({from: account})
+  }
+
   const render = () =>{
     if(isMetaMaskInstalled()){
       return(
         <div>
-          {nav()}
+          {Nav()}
           <Container>
             <Row>
-              {attribute}
+              {attributeButton}
               <Button variant='outline-danger'
                 onClick={(e) => {
                   burnToken(0)  // burn token 0
@@ -198,9 +201,11 @@ const App = () => {
               >
               burn
               </Button>
+              <Button variant='outline-danger'> Sales </Button>
+              <Button variant='outline-danger' onClick={(e)=>{setReveal()}}> Reveal </Button> 
             </Row>
             <Row>
-              {tokenArray.map((data) => {
+              {tokenOptions.map((data) => {
                 //return all Token mint option
                 return (
                   <div>
